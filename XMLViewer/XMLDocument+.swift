@@ -51,3 +51,6 @@ extension XMLDocument {
         }
     }
 }
+
+
+extension XMLDocument: @unchecked Sendable {}

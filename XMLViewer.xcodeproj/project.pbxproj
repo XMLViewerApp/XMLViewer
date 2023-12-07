@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E931EDAA2B21F2BD0044786E /* XMLViewerDocument.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931EDA92B21F2BD0044786E /* XMLViewerDocument.swift */; };
+		E931EDAD2B2215D40044786E /* ToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931EDAC2B2215D40044786E /* ToolbarController.swift */; };
+		E931EDB02B2219820044786E /* UIFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = E931EDAF2B2219820044786E /* UIFoundation */; };
 		E9A2B6F62B205375007DF1E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B6F52B205375007DF1E2 /* AppDelegate.swift */; };
 		E9A2B6F82B205375007DF1E2 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B6F72B205375007DF1E2 /* MainSplitViewController.swift */; };
 		E9A2B6FA2B205376007DF1E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A2B6F92B205376007DF1E2 /* Assets.xcassets */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E931EDA92B21F2BD0044786E /* XMLViewerDocument.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLViewerDocument.swift; sourceTree = "<group>"; };
+		E931EDAB2B21F4270044786E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		E931EDAC2B2215D40044786E /* ToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarController.swift; sourceTree = "<group>"; };
 		E9A2B6F22B205375007DF1E2 /* XMLViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMLViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A2B6F52B205375007DF1E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A2B6F72B205375007DF1E2 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
@@ -39,17 +45,26 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E931EDB02B2219820044786E /* UIFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E931EDA62B21F2A00044786E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		E9A2B6E92B205375007DF1E2 = {
 			isa = PBXGroup;
 			children = (
 				E9A2B6F42B205375007DF1E2 /* XMLViewer */,
 				E9A2B6F32B205375007DF1E2 /* Products */,
+				E931EDA62B21F2A00044786E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,11 +79,14 @@
 		E9A2B6F42B205375007DF1E2 /* XMLViewer */ = {
 			isa = PBXGroup;
 			children = (
+				E931EDAB2B21F4270044786E /* Info.plist */,
 				E9A2B6F52B205375007DF1E2 /* AppDelegate.swift */,
 				E9CC810C2B21D1AE005DAF2F /* MainWindowController.swift */,
 				E9A2B6F72B205375007DF1E2 /* MainSplitViewController.swift */,
 				E9A2B70C2B205CA9007DF1E2 /* SidebarViewController.swift */,
 				E9A2B70E2B205CAF007DF1E2 /* TreeViewController.swift */,
+				E931EDAC2B2215D40044786E /* ToolbarController.swift */,
+				E931EDA92B21F2BD0044786E /* XMLViewerDocument.swift */,
 				E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */,
 				E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */,
 				E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */,
@@ -95,6 +113,9 @@
 			dependencies = (
 			);
 			name = XMLViewer;
+			packageProductDependencies = (
+				E931EDAF2B2219820044786E /* UIFoundation */,
+			);
 			productName = XMLViewer;
 			productReference = E9A2B6F22B205375007DF1E2 /* XMLViewer.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +144,9 @@
 				Base,
 			);
 			mainGroup = E9A2B6E92B205375007DF1E2;
+			packageReferences = (
+				E931EDAE2B2219820044786E /* XCRemoteSwiftPackageReference "UIFoundation" */,
+			);
 			productRefGroup = E9A2B6F32B205375007DF1E2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -154,7 +178,9 @@
 				E9A2B70D2B205CA9007DF1E2 /* SidebarViewController.swift in Sources */,
 				E9A2B70F2B205CAF007DF1E2 /* TreeViewController.swift in Sources */,
 				E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */,
+				E931EDAA2B21F2BD0044786E /* XMLViewerDocument.swift in Sources */,
 				E9CC810B2B21BB1C005DAF2F /* XMLNodeItem.swift in Sources */,
+				E931EDAD2B2215D40044786E /* ToolbarController.swift in Sources */,
 				E9CC810D2B21D1AE005DAF2F /* MainWindowController.swift in Sources */,
 				E9A2B6F62B205375007DF1E2 /* AppDelegate.swift in Sources */,
 			);
@@ -301,9 +327,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZF2GY8W6BW;
+				DEVELOPMENT_TEAM = D5Q73692VW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XMLViewer/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -328,9 +355,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = ZF2GY8W6BW;
+				DEVELOPMENT_TEAM = D5Q73692VW;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = XMLViewer/Info.plist;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INFOPLIST_KEY_NSMainStoryboardFile = Main;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
@@ -368,6 +396,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		E931EDAE2B2219820044786E /* XCRemoteSwiftPackageReference "UIFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Mx-Iris/UIFoundation";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		E931EDAF2B2219820044786E /* UIFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E931EDAE2B2219820044786E /* XCRemoteSwiftPackageReference "UIFoundation" */;
+			productName = UIFoundation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = E9A2B6EA2B205375007DF1E2 /* Project object */;
 }

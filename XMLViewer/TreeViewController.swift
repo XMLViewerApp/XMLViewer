@@ -7,6 +7,10 @@
 
 import AppKit
 
+protocol TreeViewControllerDataSource: AnyObject {
+    var rootNode: XMLNodeItem? { get }
+}
+
 class TreeViewController: NSViewController {
     enum TableColumnIdentifer: String {
         case name = "Name"
@@ -15,7 +19,7 @@ class TreeViewController: NSViewController {
 
     @IBOutlet var outlineView: NSOutlineView!
 
-    var rootNode: XMLNodeItem? {
+    weak var dataSource: TreeViewControllerDataSource? {
         didSet {
             outlineView.reloadData()
         }
@@ -30,6 +34,10 @@ class TreeViewController: NSViewController {
         outlineView.style = .inset
         outlineView.usesAlternatingRowBackgroundColors = true
     }
+    
+    func reloadData() {
+        outlineView.reloadData()
+    }
 }
 
 extension TreeViewController: NSOutlineViewDataSource, NSOutlineViewDelegate {
@@ -37,14 +45,14 @@ extension TreeViewController: NSOutlineViewDataSource, NSOutlineViewDelegate {
         if let item = item as? XMLNodeItem {
             return item.children.count
         }
-        return rootNode?.children.count ?? 0 // rootNode 是 XML 文档的根节点
+        return dataSource?.rootNode?.children.count ?? 0 // rootNode 是 XML 文档的根节点
     }
 
     func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
         if let item = item as? XMLNodeItem {
             return item.children[index]
         }
-        return rootNode?.children[index] as Any
+        return dataSource?.rootNode?.children[index] as Any
     }
 
     func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
