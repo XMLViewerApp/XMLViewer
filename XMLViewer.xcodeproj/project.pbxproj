@@ -20,6 +20,9 @@
 		E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */; };
 		E9CC810B2B21BB1C005DAF2F /* XMLNodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */; };
 		E9CC810D2B21D1AE005DAF2F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC810C2B21D1AE005DAF2F /* MainWindowController.swift */; };
+		E9CC81102B22B574005DAF2F /* OutlineViewDiffableDataSource in Frameworks */ = {isa = PBXBuildFile; productRef = E9CC810F2B22B574005DAF2F /* OutlineViewDiffableDataSource */; };
+		E9CC81132B22CC69005DAF2F /* SFSymbol in Frameworks */ = {isa = PBXBuildFile; productRef = E9CC81122B22CC69005DAF2F /* SFSymbol */; };
+		E9CC81152B22F8E0005DAF2F /* TabViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81142B22F8E0005DAF2F /* TabViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +41,7 @@
 		E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLDocument+.swift"; sourceTree = "<group>"; };
 		E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLNodeItem.swift; sourceTree = "<group>"; };
 		E9CC810C2B21D1AE005DAF2F /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
+		E9CC81142B22F8E0005DAF2F /* TabViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -45,6 +49,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E9CC81102B22B574005DAF2F /* OutlineViewDiffableDataSource in Frameworks */,
+				E9CC81132B22CC69005DAF2F /* SFSymbol in Frameworks */,
 				E931EDB02B2219820044786E /* UIFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -79,17 +85,18 @@
 		E9A2B6F42B205375007DF1E2 /* XMLViewer */ = {
 			isa = PBXGroup;
 			children = (
-				E931EDAB2B21F4270044786E /* Info.plist */,
 				E9A2B6F52B205375007DF1E2 /* AppDelegate.swift */,
 				E9CC810C2B21D1AE005DAF2F /* MainWindowController.swift */,
 				E9A2B6F72B205375007DF1E2 /* MainSplitViewController.swift */,
 				E9A2B70C2B205CA9007DF1E2 /* SidebarViewController.swift */,
+				E9CC81142B22F8E0005DAF2F /* TabViewController.swift */,
 				E9A2B70E2B205CAF007DF1E2 /* TreeViewController.swift */,
 				E931EDAC2B2215D40044786E /* ToolbarController.swift */,
 				E931EDA92B21F2BD0044786E /* XMLViewerDocument.swift */,
 				E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */,
 				E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */,
 				E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */,
+				E931EDAB2B21F4270044786E /* Info.plist */,
 				E9A2B6F92B205376007DF1E2 /* Assets.xcassets */,
 				E9A2B6FB2B205376007DF1E2 /* Main.storyboard */,
 				E9A2B6FE2B205376007DF1E2 /* XMLViewer.entitlements */,
@@ -115,6 +122,8 @@
 			name = XMLViewer;
 			packageProductDependencies = (
 				E931EDAF2B2219820044786E /* UIFoundation */,
+				E9CC810F2B22B574005DAF2F /* OutlineViewDiffableDataSource */,
+				E9CC81122B22CC69005DAF2F /* SFSymbol */,
 			);
 			productName = XMLViewer;
 			productReference = E9A2B6F22B205375007DF1E2 /* XMLViewer.app */;
@@ -146,6 +155,8 @@
 			mainGroup = E9A2B6E92B205375007DF1E2;
 			packageReferences = (
 				E931EDAE2B2219820044786E /* XCRemoteSwiftPackageReference "UIFoundation" */,
+				E9CC810E2B22B574005DAF2F /* XCRemoteSwiftPackageReference "OutlineViewDiffableDataSource" */,
+				E9CC81112B22CC69005DAF2F /* XCRemoteSwiftPackageReference "SFSymbol" */,
 			);
 			productRefGroup = E9A2B6F32B205375007DF1E2 /* Products */;
 			projectDirPath = "";
@@ -179,6 +190,7 @@
 				E9A2B70F2B205CAF007DF1E2 /* TreeViewController.swift in Sources */,
 				E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */,
 				E931EDAA2B21F2BD0044786E /* XMLViewerDocument.swift in Sources */,
+				E9CC81152B22F8E0005DAF2F /* TabViewController.swift in Sources */,
 				E9CC810B2B21BB1C005DAF2F /* XMLNodeItem.swift in Sources */,
 				E931EDAD2B2215D40044786E /* ToolbarController.swift in Sources */,
 				E9CC810D2B21D1AE005DAF2F /* MainWindowController.swift in Sources */,
@@ -253,7 +265,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -310,7 +322,7 @@
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
-				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = macosx;
@@ -338,6 +350,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JH.XMLViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -366,6 +379,7 @@
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.JH.XMLViewer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -406,6 +420,22 @@
 				kind = branch;
 			};
 		};
+		E9CC810E2B22B574005DAF2F /* XCRemoteSwiftPackageReference "OutlineViewDiffableDataSource" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MxIris-macOS-Library-Forks/OutlineViewDiffableDataSource";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+		E9CC81112B22CC69005DAF2F /* XCRemoteSwiftPackageReference "SFSymbol" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Mx-Iris/SFSymbol";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -413,6 +443,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E931EDAE2B2219820044786E /* XCRemoteSwiftPackageReference "UIFoundation" */;
 			productName = UIFoundation;
+		};
+		E9CC810F2B22B574005DAF2F /* OutlineViewDiffableDataSource */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9CC810E2B22B574005DAF2F /* XCRemoteSwiftPackageReference "OutlineViewDiffableDataSource" */;
+			productName = OutlineViewDiffableDataSource;
+		};
+		E9CC81122B22CC69005DAF2F /* SFSymbol */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9CC81112B22CC69005DAF2F /* XCRemoteSwiftPackageReference "SFSymbol" */;
+			productName = SFSymbol;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

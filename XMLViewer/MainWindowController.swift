@@ -17,11 +17,14 @@ class MainWindowController: NSWindowController, StoryboardWindowController {
         contentViewController as! MainSplitViewController
     }
     
+    let toolbarController = ToolbarController()
+    
     override func windowDidLoad() {
         super.windowDidLoad()
         
         window?.animationBehavior = .documentWindow
         window?.center()
+        window?.toolbar = toolbarController.toolbar
     }
 }
 

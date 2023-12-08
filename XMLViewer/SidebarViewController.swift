@@ -12,4 +12,15 @@ protocol SidebarViewControllerDelegate: AnyObject {}
 
 class SidebarViewController: NSViewController {
     weak var delegate: SidebarViewControllerDelegate?
+    
+    
+    
+    @IBOutlet weak var tableView: NSTableView!
+    
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.backgroundColor = .clear
+    }
 }

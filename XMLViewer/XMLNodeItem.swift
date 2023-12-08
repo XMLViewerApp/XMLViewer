@@ -7,25 +7,92 @@
 
 import Foundation
 
-class XMLNodeItem {
-    var xmlNode: XMLNode
-    var children: [XMLNodeItem] = []
+class XMLNodeItem: Hashable, Comparable {
+    let node: XMLNode
 
-    init(xmlNode: XMLNode) {
-        self.xmlNode = xmlNode
+    private(set) var children: [XMLNodeItem] = []
 
+    private(set) var siblingIndex: Int
+
+    private(set) var isDisplayIndex: Bool
+    
+    convenience init(rootElement: XMLElement) {
+        self.init(element: rootElement, siblingIndex: 0, isDisplayIndex: false)
+    }
+    
+    init(element: XMLNode, siblingIndex: Int, isDisplayIndex: Bool) {
+        self.node = element
+        
+        self.siblingIndex = siblingIndex
+        
+        self.isDisplayIndex = isDisplayIndex
         // 处理子节点
-        if let element = xmlNode as? XMLElement {
-            self.children = element.children?.compactMap { XMLNodeItem(xmlNode: $0) } ?? []
-
+        if let element = element as? XMLElement {
+            var childNameCounts = [String: Int]()
+            var childIndexMap = [String: Int]()
+            let elementChildrenNodes = element.children ?? []
+            
+            for childrenNode in elementChildrenNodes {
+                if let name = childrenNode.name {
+                    childNameCounts[name, default: 0] += 1
+                }
+            }
+            
+            self.children = elementChildrenNodes.compactMap { node in
+                var index = 0
+                var isDisplayIndex = false
+                if let name = node.name {
+                    index = childIndexMap[name, default: 0]
+                    isDisplayIndex = childNameCounts[name, default: 0] > 1
+                    childIndexMap[name] = index + 1
+                    
+                }
+                return XMLNodeItem(element: node, siblingIndex: index, isDisplayIndex: isDisplayIndex)
+            }
+            
+            var attributeNameCounts = [String: Int]()
+            var attributeIndexMap = [String: Int]()
+            let attributeNodes = element.attributes ?? []
+            for attributeNode in attributeNodes {
+                if let name = attributeNode.name {
+                    attributeNameCounts[name, default: 0] += 1
+                }
+            }
+            
             // 将属性也作为节点添加
-            let attributeNodes = element.attributes?.compactMap { XMLNodeItem(attribute: $0) } ?? []
-            self.children.append(contentsOf: attributeNodes)
+            let attributeChildrenNodes: [XMLNodeItem] = attributeNodes.compactMap { node in
+                var index = 0
+                var isDisplayIndex = false
+                if let name = node.name {
+                    index = attributeIndexMap[name, default: 0]
+                    isDisplayIndex = attributeNameCounts[name, default: 0] > 1
+                    attributeIndexMap[name] = index + 1
+                }
+                return XMLNodeItem(attribute: node, siblingIndex: index, isDisplayIndex: isDisplayIndex)
+            }
+            
+            children.append(contentsOf: attributeChildrenNodes)
         }
+
+        children.sort()
     }
 
     // 专门用于处理属性节点的初始化方法
-    init(attribute: XMLNode) {
-        self.xmlNode = attribute
+    init(attribute: XMLNode, siblingIndex: Int, isDisplayIndex: Bool) {
+        self.node = attribute
+        self.siblingIndex = siblingIndex
+        self.isDisplayIndex = isDisplayIndex
+    }
+
+    static func == (lhs: XMLNodeItem, rhs: XMLNodeItem) -> Bool {
+        lhs.node == rhs.node
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(node)
+    }
+
+    static func < (lhs: XMLNodeItem, rhs: XMLNodeItem) -> Bool {
+        lhs.node.kind.rawValue > rhs.node.kind.rawValue
     }
 }

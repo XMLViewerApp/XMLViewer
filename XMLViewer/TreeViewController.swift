@@ -15,6 +15,7 @@ class TreeViewController: NSViewController {
     enum TableColumnIdentifer: String {
         case name = "Name"
         case value = "Value"
+        case index = "Index"
     }
 
     @IBOutlet var outlineView: NSOutlineView!
@@ -30,7 +31,8 @@ class TreeViewController: NSViewController {
 
         outlineView.dataSource = self
         outlineView.delegate = self
-        outlineView.rowHeight = 30
+        outlineView.rowHeight = 25
+        
         outlineView.style = .inset
         outlineView.usesAlternatingRowBackgroundColors = true
     }
@@ -70,11 +72,24 @@ extension TreeViewController: NSOutlineViewDataSource, NSOutlineViewDelegate {
         else { return nil }
         switch tableColumnIdentifer {
         case .name:
-            cell.textField?.stringValue = item.xmlNode.name ?? "N/A"
+            cell.textField?.stringValue = item.node.name ?? "N/A"
         case .value:
-            cell.textField?.stringValue = item.xmlNode.stringValue ?? "N/A"
+            cell.textField?.stringValue = item.node.stringValue ?? "N/A"
+        case .index:
+            cell.textField?.stringValue = item.isDisplayIndex ? item.siblingIndex.formatted() : ""
+            cell.textField?.alignment = .center
         }
+        cell.textField?.font = .monospacedSystemFont(ofSize: 12, weight: .regular)
 
         return cell
     }
+}
+
+class XMLNameCellView: NSTableCellView {
+    
+}
+
+
+class XMLValueCellView: NSTableCellView {
+    
 }

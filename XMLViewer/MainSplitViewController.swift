@@ -13,8 +13,8 @@ class MainSplitViewController: NSSplitViewController {
         splitViewItems[0].viewController as! SidebarViewController
     }
 
-    var treeViewController: TreeViewController {
-        splitViewItems[1].viewController as! TreeViewController
+    var tabViewController: TabViewController {
+        splitViewItems[1].viewController as! TabViewController
     }
 
     override func viewDidLoad() {
