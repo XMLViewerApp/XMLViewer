@@ -16,10 +16,12 @@
 				<string>public.xml</string>
 			</array>
 			<key>NSDocumentClass</key>
-			<string>XMLViewerDocument</string>
+			<string>$(PRODUCT_MODULE_NAME).Document</string>
 		</dict>
 	</array>
-	<key>UTExportedTypeDeclarations</key>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
+	<key>UTImportedTypeDeclarations</key>
 	<array>
 		<dict>
 			<key>UTTypeConformsTo</key>
@@ -44,29 +46,72 @@
 				</array>
 			</dict>
 		</dict>
-	</array>
-	<key>UTImportedTypeDeclarations</key>
-	<array>
 		<dict>
 			<key>UTTypeConformsTo</key>
 			<array>
-				<string>public.text</string>
+				<string>public.data</string>
 			</array>
 			<key>UTTypeDescription</key>
-			<string>XML</string>
+			<string>Word Processing Document</string>
 			<key>UTTypeIcons</key>
 			<dict/>
 			<key>UTTypeIdentifier</key>
-			<string>public.xml</string>
+			<string>org.openxmlformats.wordprocessingml.document</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
 				<array>
-					<string>xml</string>
+					<string>docx</string>
 				</array>
 				<key>public.mime-type</key>
 				<array>
-					<string>application/xml</string>
+					<string>application/vnd.openxmlformats-officedocument.wordprocessingml.document</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Spreadsheet Document</string>
+			<key>UTTypeIcons</key>
+			<dict/>
+			<key>UTTypeIdentifier</key>
+			<string>org.openxmlformats.spreadsheetml.sheet</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>xlsx</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/vnd.openxmlformats-officedocument.spreadsheetml.sheet</string>
+				</array>
+			</dict>
+		</dict>
+		<dict>
+			<key>UTTypeConformsTo</key>
+			<array>
+				<string>public.data</string>
+			</array>
+			<key>UTTypeDescription</key>
+			<string>Presentation Document</string>
+			<key>UTTypeIcons</key>
+			<dict/>
+			<key>UTTypeIdentifier</key>
+			<string>org.openxmlformats.presentationml.presentation</string>
+			<key>UTTypeTagSpecification</key>
+			<dict>
+				<key>public.filename-extension</key>
+				<array>
+					<string>pptx</string>
+				</array>
+				<key>public.mime-type</key>
+				<array>
+					<string>application/vnd.openxmlformats-officedocument.presentationml.presentation</string>
 				</array>
 			</dict>
 		</dict>

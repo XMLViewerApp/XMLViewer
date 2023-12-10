@@ -5,19 +5,27 @@
 //  Created by JH on 2023/12/6.
 //
 
-import Cocoa
+import AppKit
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
+    override init() {
+        super.init()
+        _ = DocumentController.shared
+    }
+
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
+        WelcomeManager.shared.show()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
-
-    func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
+    
+    func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
+        if !flag {
+            WelcomeManager.shared.show()
+        }
         return true
     }
 }
