@@ -6,13 +6,21 @@
 //
 
 import AppKit
+import UIFoundation
 import MagicLoading
 
-protocol TreeViewControllerDelegate: AnyObject {
-    func treeViewController(_ treeViewController: TreeViewController, didSelectXMLNodeItem item: XMLNodeItem?)
+protocol OutlineViewControllerDelegate: AnyObject {
+    func outlineViewController(_ treeViewController: OutlineViewController, didSelectXMLNodeItem item: XMLNodeItem?)
 }
 
-class TreeViewController: NSViewController {
+@IBDesignable
+class OutlineViewController: EmbedViewController, StoryboardViewController {
+    
+    static var storyboard: _NSUIStoryboard { .main }
+    
+    static var storyboardIdentifier: String { .init(describing: self) }
+    
+    
     enum TableColumnIdentifer: String {
         case name = "Name"
         case value = "Value"
@@ -28,7 +36,7 @@ class TreeViewController: NSViewController {
         }
     }
 
-    weak var delegate: TreeViewControllerDelegate?
+    weak var delegate: OutlineViewControllerDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +50,7 @@ class TreeViewController: NSViewController {
     }
 }
 
-extension TreeViewController: NSOutlineViewDataSource, NSOutlineViewDelegate {
+extension OutlineViewController: NSOutlineViewDataSource, NSOutlineViewDelegate {
     func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
         if let item = item as? XMLNodeItem {
             return item.children.count
@@ -93,6 +101,6 @@ extension TreeViewController: NSOutlineViewDataSource, NSOutlineViewDelegate {
 
     func outlineViewSelectionIsChanging(_ notification: Notification) {
         let item = outlineView.item(atRow: outlineView.selectedRow) as? XMLNodeItem
-        delegate?.treeViewController(self, didSelectXMLNodeItem: item)
+        delegate?.outlineViewController(self, didSelectXMLNodeItem: item)
     }
 }

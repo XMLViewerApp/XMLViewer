@@ -10,20 +10,21 @@ import MagicLoading
 
 class ContentViewController: NSTabViewController {
     @MagicViewLoading
-    @IBOutlet var treeViewControllerItem: NSTabViewItem
+    @IBOutlet var outlineSplitViewControllerItem: NSTabViewItem
 
     @MagicViewLoading
-    @IBOutlet var textViewControllerItem: NSTabViewItem
+    @IBOutlet var textSplitViewControllerItem: NSTabViewItem
     
-    var treeViewController: TreeViewController {
-        treeViewControllerItem.viewController as! TreeViewController
+    var outlineSplitViewController: OutlineSplitViewController {
+        outlineSplitViewControllerItem.viewController as! OutlineSplitViewController
     }
 
-    var textViewController: TextViewController {
-        textViewControllerItem.viewController as! TextViewController
+    var textSplitViewController: TextSplitViewController {
+        textSplitViewControllerItem.viewController as! TextSplitViewController
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 }

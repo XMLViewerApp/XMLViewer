@@ -83,7 +83,7 @@ class SidebarToolbarItem: NSToolbarItem {
 class InspectorToolbarItem: NSToolbarItem {
     override init(itemIdentifier: NSToolbarItem.Identifier) {
         super.init(itemIdentifier: itemIdentifier)
-        action = #selector(SplitViewController._toggleInspector(_:))
+        action = #selector(MainSplitViewController._toggleInspector(_:))
         image = SFSymbol(systemName: .sidebarRight).nsImage
     }
 }

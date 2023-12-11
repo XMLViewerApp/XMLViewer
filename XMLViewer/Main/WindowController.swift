@@ -13,8 +13,8 @@ class WindowController: NSWindowController, StoryboardWindowController {
 
     static var storyboardIdentifier: String { .init(describing: self) }
 
-    var splitViewController: SplitViewController {
-        contentViewController as! SplitViewController
+    var splitViewController: MainSplitViewController {
+        contentViewController as! MainSplitViewController
     }
 
     lazy var toolbarController = ToolbarController(delegate: self)

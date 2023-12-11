@@ -15,11 +15,11 @@
 		E931EDAD2B2215D40044786E /* ToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931EDAC2B2215D40044786E /* ToolbarController.swift */; };
 		E931EDB02B2219820044786E /* UIFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = E931EDAF2B2219820044786E /* UIFoundation */; };
 		E9A2B6F62B205375007DF1E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B6F52B205375007DF1E2 /* AppDelegate.swift */; };
-		E9A2B6F82B205375007DF1E2 /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B6F72B205375007DF1E2 /* SplitViewController.swift */; };
+		E9A2B6F82B205375007DF1E2 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B6F72B205375007DF1E2 /* MainSplitViewController.swift */; };
 		E9A2B6FA2B205376007DF1E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A2B6F92B205376007DF1E2 /* Assets.xcassets */; };
 		E9A2B6FD2B205376007DF1E2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E9A2B6FB2B205376007DF1E2 /* Main.storyboard */; };
 		E9A2B70D2B205CA9007DF1E2 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B70C2B205CA9007DF1E2 /* SidebarViewController.swift */; };
-		E9A2B70F2B205CAF007DF1E2 /* TreeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B70E2B205CAF007DF1E2 /* TreeViewController.swift */; };
+		E9A2B70F2B205CAF007DF1E2 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B70E2B205CAF007DF1E2 /* OutlineViewController.swift */; };
 		E9AD29CF2B24B9D000A900F1 /* InspectorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29CE2B24B9D000A900F1 /* InspectorCellView.swift */; };
 		E9AD29D12B24BA0400A900F1 /* TreeNodeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29D02B24BA0400A900F1 /* TreeNodeCellView.swift */; };
 		E9AD29DD2B24F78100A900F1 /* WelcomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29DC2B24F78100A900F1 /* WelcomeManager.swift */; };
@@ -33,6 +33,12 @@
 		E9AD2A2B2B25FB6700A900F1 /* XMLDocumentItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A2A2B25FB6700A900F1 /* XMLDocumentItemStore.swift */; };
 		E9AD2A2D2B25FBEC00A900F1 /* Storyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A2C2B25FBEC00A900F1 /* Storyboard.swift */; };
 		E9AD2A302B261C3A00A900F1 /* WelcomeKit in Frameworks */ = {isa = PBXBuildFile; productRef = E9AD2A2F2B261C3A00A900F1 /* WelcomeKit */; };
+		E9AD2A332B2744CA00A900F1 /* KeyCodes in Frameworks */ = {isa = PBXBuildFile; productRef = E9AD2A322B2744CA00A900F1 /* KeyCodes */; };
+		E9AD2A352B274ADB00A900F1 /* OutlineSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A342B274ADB00A900F1 /* OutlineSplitViewController.swift */; };
+		E9AD2A372B274AF200A900F1 /* TextSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A362B274AF200A900F1 /* TextSplitViewController.swift */; };
+		E9AD2A392B274FD900A900F1 /* FocusObservationSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A382B274FD900A900F1 /* FocusObservationSplitViewController.swift */; };
+		E9AD2A3B2B27783100A900F1 /* EmbedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A3A2B27783100A900F1 /* EmbedViewController.swift */; };
+		E9AD2A3D2B277A7F00A900F1 /* ContainerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9AD2A3C2B277A7F00A900F1 /* ContainerView.xib */; };
 		E9CC81072B21BA66005DAF2F /* XMLParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */; };
 		E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */; };
 		E9CC810B2B21BB1C005DAF2F /* XMLNodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */; };
@@ -51,12 +57,12 @@
 		E931EDAC2B2215D40044786E /* ToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarController.swift; sourceTree = "<group>"; };
 		E9A2B6F22B205375007DF1E2 /* XMLViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMLViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A2B6F52B205375007DF1E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		E9A2B6F72B205375007DF1E2 /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
+		E9A2B6F72B205375007DF1E2 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
 		E9A2B6F92B205376007DF1E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E9A2B6FC2B205376007DF1E2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E9A2B6FE2B205376007DF1E2 /* XMLViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XMLViewer.entitlements; sourceTree = "<group>"; };
 		E9A2B70C2B205CA9007DF1E2 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
-		E9A2B70E2B205CAF007DF1E2 /* TreeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeViewController.swift; sourceTree = "<group>"; };
+		E9A2B70E2B205CAF007DF1E2 /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
 		E9AD29CE2B24B9D000A900F1 /* InspectorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorCellView.swift; sourceTree = "<group>"; };
 		E9AD29D02B24BA0400A900F1 /* TreeNodeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TreeNodeCellView.swift; sourceTree = "<group>"; };
 		E9AD29DC2B24F78100A900F1 /* WelcomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeManager.swift; sourceTree = "<group>"; };
@@ -66,6 +72,11 @@
 		E9AD2A282B25FB6100A900F1 /* XMLDocumentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLDocumentItem.swift; sourceTree = "<group>"; };
 		E9AD2A2A2B25FB6700A900F1 /* XMLDocumentItemStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLDocumentItemStore.swift; sourceTree = "<group>"; };
 		E9AD2A2C2B25FBEC00A900F1 /* Storyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboard.swift; sourceTree = "<group>"; };
+		E9AD2A342B274ADB00A900F1 /* OutlineSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineSplitViewController.swift; sourceTree = "<group>"; };
+		E9AD2A362B274AF200A900F1 /* TextSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSplitViewController.swift; sourceTree = "<group>"; };
+		E9AD2A382B274FD900A900F1 /* FocusObservationSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusObservationSplitViewController.swift; sourceTree = "<group>"; };
+		E9AD2A3A2B27783100A900F1 /* EmbedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmbedViewController.swift; sourceTree = "<group>"; };
+		E9AD2A3C2B277A7F00A900F1 /* ContainerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContainerView.xib; sourceTree = "<group>"; };
 		E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserDelegate.swift; sourceTree = "<group>"; };
 		E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLDocument+.swift"; sourceTree = "<group>"; };
 		E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLNodeItem.swift; sourceTree = "<group>"; };
@@ -84,6 +95,7 @@
 				E9CC81132B22CC69005DAF2F /* SFSymbol in Frameworks */,
 				E931EDB02B2219820044786E /* UIFoundation in Frameworks */,
 				E9AD2A222B25F2F300A900F1 /* ZIPFoundation in Frameworks */,
+				E9AD2A332B2744CA00A900F1 /* KeyCodes in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -126,6 +138,7 @@
 				E931EDAB2B21F4270044786E /* Info.plist */,
 				E9A2B6F92B205376007DF1E2 /* Assets.xcassets */,
 				E9A2B6FB2B205376007DF1E2 /* Main.storyboard */,
+				E9AD2A3C2B277A7F00A900F1 /* ContainerView.xib */,
 				E9A2B6FE2B205376007DF1E2 /* XMLViewer.entitlements */,
 			);
 			path = XMLViewer;
@@ -144,8 +157,12 @@
 			isa = PBXGroup;
 			children = (
 				E9CC81142B22F8E0005DAF2F /* ContentViewController.swift */,
+				E9AD2A3A2B27783100A900F1 /* EmbedViewController.swift */,
+				E9AD2A382B274FD900A900F1 /* FocusObservationSplitViewController.swift */,
+				E9AD2A342B274ADB00A900F1 /* OutlineSplitViewController.swift */,
+				E9AD2A362B274AF200A900F1 /* TextSplitViewController.swift */,
 				E9014E122B236EB700B14280 /* TextViewController.swift */,
-				E9A2B70E2B205CAF007DF1E2 /* TreeViewController.swift */,
+				E9A2B70E2B205CAF007DF1E2 /* OutlineViewController.swift */,
 				E9AD29D02B24BA0400A900F1 /* TreeNodeCellView.swift */,
 			);
 			path = Content;
@@ -180,7 +197,7 @@
 				E931EDA92B21F2BD0044786E /* Document.swift */,
 				E9AD2A1E2B25E01800A900F1 /* DocumentController.swift */,
 				E9CC810C2B21D1AE005DAF2F /* WindowController.swift */,
-				E9A2B6F72B205375007DF1E2 /* SplitViewController.swift */,
+				E9A2B6F72B205375007DF1E2 /* MainSplitViewController.swift */,
 				E931EDAC2B2215D40044786E /* ToolbarController.swift */,
 			);
 			path = Main;
@@ -220,6 +237,7 @@
 				E9AD2A212B25F2F300A900F1 /* ZIPFoundation */,
 				E9AD2A242B25F42F00A900F1 /* IDEIcons */,
 				E9AD2A2F2B261C3A00A900F1 /* WelcomeKit */,
+				E9AD2A322B2744CA00A900F1 /* KeyCodes */,
 			);
 			productName = XMLViewer;
 			productReference = E9A2B6F22B205375007DF1E2 /* XMLViewer.app */;
@@ -256,6 +274,7 @@
 				E9AD2A202B25F2F300A900F1 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				E9AD2A232B25F42F00A900F1 /* XCRemoteSwiftPackageReference "ide-icons" */,
 				E9AD2A2E2B261C3A00A900F1 /* XCRemoteSwiftPackageReference "WelcomeKit" */,
+				E9AD2A312B2744CA00A900F1 /* XCRemoteSwiftPackageReference "KeyCodes" */,
 			);
 			productRefGroup = E9A2B6F32B205375007DF1E2 /* Products */;
 			projectDirPath = "";
@@ -272,6 +291,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A2B6FA2B205376007DF1E2 /* Assets.xcassets in Resources */,
+				E9AD2A3D2B277A7F00A900F1 /* ContainerView.xib in Resources */,
 				E9A2B6FD2B205376007DF1E2 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,17 +305,21 @@
 			files = (
 				E9AD29DD2B24F78100A900F1 /* WelcomeManager.swift in Sources */,
 				E9CC81072B21BA66005DAF2F /* XMLParserDelegate.swift in Sources */,
+				E9AD2A372B274AF200A900F1 /* TextSplitViewController.swift in Sources */,
+				E9AD2A352B274ADB00A900F1 /* OutlineSplitViewController.swift in Sources */,
 				E9AD2A1F2B25E01800A900F1 /* DocumentController.swift in Sources */,
-				E9A2B6F82B205375007DF1E2 /* SplitViewController.swift in Sources */,
+				E9AD2A392B274FD900A900F1 /* FocusObservationSplitViewController.swift in Sources */,
+				E9A2B6F82B205375007DF1E2 /* MainSplitViewController.swift in Sources */,
 				E9AD2A2D2B25FBEC00A900F1 /* Storyboard.swift in Sources */,
 				E9A2B70D2B205CA9007DF1E2 /* SidebarViewController.swift in Sources */,
 				E9AD2A272B25F55B00A900F1 /* XMLNode.Kind+.swift in Sources */,
-				E9A2B70F2B205CAF007DF1E2 /* TreeViewController.swift in Sources */,
+				E9A2B70F2B205CAF007DF1E2 /* OutlineViewController.swift in Sources */,
 				E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */,
 				E9AD29CF2B24B9D000A900F1 /* InspectorCellView.swift in Sources */,
 				E9AD2A2B2B25FB6700A900F1 /* XMLDocumentItemStore.swift in Sources */,
 				E9014E132B236EB700B14280 /* TextViewController.swift in Sources */,
 				E9014E0C2B23684D00B14280 /* SidebarCellView.swift in Sources */,
+				E9AD2A3B2B27783100A900F1 /* EmbedViewController.swift in Sources */,
 				E931EDAA2B21F2BD0044786E /* Document.swift in Sources */,
 				E9014E0F2B2368F300B14280 /* Then.swift in Sources */,
 				E9AD2A292B25FB6100A900F1 /* XMLDocumentItem.swift in Sources */,
@@ -566,6 +590,14 @@
 				kind = branch;
 			};
 		};
+		E9AD2A312B2744CA00A900F1 /* XCRemoteSwiftPackageReference "KeyCodes" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ChimeHQ/KeyCodes.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		E9CC81112B22CC69005DAF2F /* XCRemoteSwiftPackageReference "SFSymbol" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Mx-Iris/SFSymbol";
@@ -601,6 +633,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E9AD2A2E2B261C3A00A900F1 /* XCRemoteSwiftPackageReference "WelcomeKit" */;
 			productName = WelcomeKit;
+		};
+		E9AD2A322B2744CA00A900F1 /* KeyCodes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9AD2A312B2744CA00A900F1 /* XCRemoteSwiftPackageReference "KeyCodes" */;
+			productName = KeyCodes;
 		};
 		E9CC81122B22CC69005DAF2F /* SFSymbol */ = {
 			isa = XCSwiftPackageProductDependency;

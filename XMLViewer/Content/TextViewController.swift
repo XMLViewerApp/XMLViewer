@@ -9,7 +9,13 @@ import AppKit
 import UIFoundation
 import MagicLoading
 
-class TextViewController: NSViewController {
+@IBDesignable
+class TextViewController: EmbedViewController, StoryboardViewController {
+    
+    static var storyboard: _NSUIStoryboard { .main }
+    
+    static var storyboardIdentifier: String { .init(describing: self) }
+    
     @MagicViewLoading
     @IBOutlet var textView: NSTextView
 

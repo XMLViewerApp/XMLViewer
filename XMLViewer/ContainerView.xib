@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="22155" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="22155"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner"/>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <view id="Ogi-kM-XqR" customClass="ContainerView" customModule="XMLViewer" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="i4b-v7-jkL">
+                    <rect key="frame" x="0.0" y="270" width="450" height="30"/>
+                    <subviews>
+                        <button translatesAutoresizingMaskIntoConstraints="NO" id="a0n-h7-tMr">
+                            <rect key="frame" x="0.0" y="-1.5" width="30.5" height="34"/>
+                            <buttonCell key="cell" type="bevel" bezelStyle="regularSquare" image="NSStopProgressTemplate" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="VNb-8T-YEt">
+                                <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="30" id="jDX-60-bcS"/>
+                            </constraints>
+                        </button>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="a0n-h7-tMr" firstAttribute="top" secondItem="i4b-v7-jkL" secondAttribute="top" id="LU9-O3-bFC"/>
+                        <constraint firstAttribute="height" constant="30" id="Rcw-9o-Hrj"/>
+                        <constraint firstItem="a0n-h7-tMr" firstAttribute="leading" secondItem="i4b-v7-jkL" secondAttribute="leading" id="ZUp-SD-nzc"/>
+                        <constraint firstAttribute="bottom" secondItem="a0n-h7-tMr" secondAttribute="bottom" id="bol-IH-obE"/>
+                    </constraints>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="vvT-Mt-FKR">
+                    <rect key="frame" x="0.0" y="30" width="450" height="240"/>
+                </customView>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="fDk-EI-LVV">
+                    <rect key="frame" x="0.0" y="0.0" width="450" height="30"/>
+                    <subviews>
+                        <pathControl verticalHuggingPriority="750" allowsExpansionToolTips="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dld-Fe-Mhv">
+                            <rect key="frame" x="0.0" y="0.0" width="450" height="30"/>
+                            <pathCell key="cell" controlSize="small" selectable="YES" editable="YES" alignment="left" id="D26-vJ-Dkd">
+                                <font key="font" metaFont="smallSystem"/>
+                                <url key="url" string="file://localhost/Applications/"/>
+                            </pathCell>
+                        </pathControl>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="dld-Fe-Mhv" firstAttribute="leading" secondItem="fDk-EI-LVV" secondAttribute="leading" id="RSr-jI-Dca"/>
+                        <constraint firstAttribute="trailing" secondItem="dld-Fe-Mhv" secondAttribute="trailing" id="crI-Ky-1Bl"/>
+                        <constraint firstItem="dld-Fe-Mhv" firstAttribute="top" secondItem="fDk-EI-LVV" secondAttribute="top" id="lsm-X9-yww"/>
+                        <constraint firstAttribute="bottom" secondItem="dld-Fe-Mhv" secondAttribute="bottom" id="v5h-gL-gN7"/>
+                        <constraint firstAttribute="height" constant="30" id="zKd-O2-2Qo"/>
+                    </constraints>
+                </customView>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="fDk-EI-LVV" secondAttribute="trailing" id="61A-kX-EtH"/>
+                <constraint firstAttribute="bottom" secondItem="fDk-EI-LVV" secondAttribute="bottom" id="Kgk-rT-XpP"/>
+                <constraint firstAttribute="trailing" secondItem="vvT-Mt-FKR" secondAttribute="trailing" id="NKH-BB-SPN"/>
+                <constraint firstItem="vvT-Mt-FKR" firstAttribute="leading" secondItem="Ogi-kM-XqR" secondAttribute="leading" id="XFQ-kT-f15"/>
+                <constraint firstItem="i4b-v7-jkL" firstAttribute="top" secondItem="Ogi-kM-XqR" secondAttribute="top" id="b3y-4O-Nes"/>
+                <constraint firstAttribute="trailing" secondItem="i4b-v7-jkL" secondAttribute="trailing" id="gL8-1z-Tvp"/>
+                <constraint firstItem="fDk-EI-LVV" firstAttribute="leading" secondItem="Ogi-kM-XqR" secondAttribute="leading" id="joE-Ew-sbQ"/>
+                <constraint firstItem="i4b-v7-jkL" firstAttribute="leading" secondItem="Ogi-kM-XqR" secondAttribute="leading" id="lDu-UK-Hco"/>
+                <constraint firstItem="fDk-EI-LVV" firstAttribute="top" secondItem="vvT-Mt-FKR" secondAttribute="bottom" id="s6t-ag-6ba"/>
+                <constraint firstItem="vvT-Mt-FKR" firstAttribute="top" secondItem="i4b-v7-jkL" secondAttribute="bottom" id="t8d-jE-pUW"/>
+            </constraints>
+            <point key="canvasLocation" x="8" y="493"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="NSStopProgressTemplate" width="17" height="16"/>
+    </resources>
+</document>

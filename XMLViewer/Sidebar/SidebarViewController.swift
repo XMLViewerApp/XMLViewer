@@ -12,6 +12,7 @@ import SFSymbol
 
 protocol SidebarViewControllerDelegate: AnyObject {
     func sidebarViewController(_ controller: SidebarViewController, didSelectRow row: Int)
+    func sidebarViewController(_ controller: SidebarViewController, didPressOptionKeySelectRow row: Int)
 }
 
 class SidebarViewController: NSViewController {
@@ -22,6 +23,8 @@ class SidebarViewController: NSViewController {
             tableView.reloadData()
         }
     }
+    
+    var isPressOptionKey: Bool = false
     
     @MagicViewLoading
     @IBOutlet var tableView: NSTableView
@@ -35,6 +38,10 @@ class SidebarViewController: NSViewController {
             $0.delegate = self
             $0.rowHeight = 30
         }
+    }
+    override func flagsChanged(with event: NSEvent) {
+        isPressOptionKey = event.modifierFlags.contains(.option)
+        super.flagsChanged(with: event)
     }
 }
 
@@ -53,5 +60,8 @@ extension SidebarViewController: NSTableViewDataSource, NSTableViewDelegate {
     
     func tableViewSelectionIsChanging(_ notification: Notification) {
         delegate?.sidebarViewController(self, didSelectRow: tableView.selectedRow)
+        if isPressOptionKey {
+            delegate?.sidebarViewController(self, didPressOptionKeySelectRow: tableView.selectedRow)
+        }
     }
 }
