@@ -13,26 +13,41 @@ protocol OutlineViewControllerDelegate: AnyObject {
     func outlineViewController(_ treeViewController: OutlineViewController, didSelectXMLNodeItem item: XMLNodeItem?)
 }
 
-@IBDesignable
-class OutlineViewController: EmbedViewController, StoryboardViewController {
-    
-    static var storyboard: _NSUIStoryboard { .main }
-    
-    static var storyboardIdentifier: String { .init(describing: self) }
-    
-    
-    enum TableColumnIdentifer: String {
+class OutlineViewController: ScrollViewController<NSOutlineView> {
+    enum TableColumnIdentifer: String, CaseIterable {
         case name = "Name"
-        case value = "Value"
         case index = "Index"
+        case value = "Value"
+        var identifier: NSUserInterfaceItemIdentifier {
+            return .init(rawValue: rawValue)
+        }
+        
+        var width: CGFloat {
+            switch self {
+            case .name:
+                174
+            case .index:
+                46
+            case .value:
+                200
+            }
+        }
+        
+        var minWidth: CGFloat {
+            switch self {
+            case .name:
+                174
+            case .index:
+                46
+            case .value:
+                200
+            }
+        }
     }
-
-    @MagicViewLoading
-    @IBOutlet var outlineView: NSOutlineView
 
     var rootNode: XMLNodeItem? {
         didSet {
-            outlineView.reloadData()
+            contentView.reloadData()
         }
     }
 
@@ -41,12 +56,20 @@ class OutlineViewController: EmbedViewController, StoryboardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        outlineView.dataSource = self
-        outlineView.delegate = self
-        outlineView.rowHeight = 25
-
-        outlineView.style = .inset
-        outlineView.usesAlternatingRowBackgroundColors = true
+        contentView.then {
+            $0.dataSource = self
+            $0.delegate = self
+            $0.rowHeight = 25
+            $0.style = .inset
+            $0.usesAlternatingRowBackgroundColors = true
+        }
+        TableColumnIdentifer.allCases.forEach { column in
+            let tableColumn = NSTableColumn(identifier: column.identifier)
+            tableColumn.title = column.rawValue
+            tableColumn.width = column.width
+            tableColumn.minWidth = column.minWidth
+            contentView.addTableColumn(tableColumn)
+        }
     }
 }
 
@@ -80,16 +103,16 @@ extension OutlineViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
         let cellView: NSTableCellView
         switch tableColumnIdentifer {
         case .name:
-            guard let nameCellView = outlineView.makeView(withIdentifier: TreeNodeNameCellView.box.typeNameIdentifier, owner: self) as? TreeNodeNameCellView else { return nil }
+            let nameCellView = outlineView.box.makeView(withType: OutlineNodeNameCellView.self, onwer: self)
             nameCellView.imageView?.image = item.node.kind.ideIcon?.image
             nameCellView.textField?.stringValue = item.node.name ?? "N/A"
             cellView = nameCellView
         case .value:
-            guard let valueCellView = outlineView.makeView(withIdentifier: TreeNodeTextCellView.box.typeNameIdentifier, owner: self) as? TreeNodeTextCellView else { return nil }
+            let valueCellView = outlineView.box.makeView(withType: OutlineNodeTextCellView.self, onwer: self)
             valueCellView.textField?.stringValue = item.hasChildren ? "" : item.node.stringValue ?? ""
             cellView = valueCellView
         case .index:
-            guard let indexCellView = outlineView.makeView(withIdentifier: TreeNodeTextCellView.box.typeNameIdentifier, owner: self) as? TreeNodeTextCellView else { return nil }
+            let indexCellView = outlineView.box.makeView(withType: OutlineNodeTextCellView.self, onwer: self)
             indexCellView.textField?.stringValue = item.isDisplayIndex ? item.siblingIndex.formatted() : ""
             indexCellView.textField?.alignment = .center
             cellView = indexCellView
@@ -100,7 +123,7 @@ extension OutlineViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
     }
 
     func outlineViewSelectionIsChanging(_ notification: Notification) {
-        let item = outlineView.item(atRow: outlineView.selectedRow) as? XMLNodeItem
+        let item = contentView.item(atRow: contentView.selectedRow) as? XMLNodeItem
         delegate?.outlineViewController(self, didSelectXMLNodeItem: item)
     }
 }

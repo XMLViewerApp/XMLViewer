@@ -9,20 +9,11 @@ import AppKit
 import UIFoundation
 import MagicLoading
 
-@IBDesignable
-class TextViewController: EmbedViewController, StoryboardViewController {
-    
-    static var storyboard: _NSUIStoryboard { .main }
-    
-    static var storyboardIdentifier: String { .init(describing: self) }
-    
-    @MagicViewLoading
-    @IBOutlet var textView: NSTextView
-
+class TextViewController: ScrollViewController<NSTextView> {
     var text: String? {
         didSet {
             if let text {
-                textView.string = text
+                contentView.string = text
             }
         }
     }
@@ -30,7 +21,7 @@ class TextViewController: EmbedViewController, StoryboardViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        textView.do {
+        contentView.do {
             $0.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
             $0.isEditable = false
             $0.isSelectable = true

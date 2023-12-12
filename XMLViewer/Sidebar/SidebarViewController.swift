@@ -9,30 +9,33 @@ import AppKit
 import UniformTypeIdentifiers
 import MagicLoading
 import SFSymbol
+import UIFoundation
 
 protocol SidebarViewControllerDelegate: AnyObject {
     func sidebarViewController(_ controller: SidebarViewController, didSelectRow row: Int)
     func sidebarViewController(_ controller: SidebarViewController, didPressOptionKeySelectRow row: Int)
 }
 
-class SidebarViewController: NSViewController {
+class SidebarViewController: VisualEffectScrollViewController<TableView> {
     weak var delegate: SidebarViewControllerDelegate?
 
     var items: [String] = [] {
         didSet {
-            tableView.reloadData()
+            contentView.reloadData()
         }
     }
     
     var isPressOptionKey: Bool = false
-    
-    @MagicViewLoading
-    @IBOutlet var tableView: NSTableView
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        tableView.do {
+        scrollView.do {
+            $0.drawsBackground = false
+            $0.backgroundColor = .clear
+        }
+        
+        contentView.do {
             $0.backgroundColor = .clear
             $0.dataSource = self
             $0.delegate = self
@@ -51,7 +54,7 @@ extension SidebarViewController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        guard let cellView = tableView.makeView(withIdentifier: SidebarCellView.box.typeNameIdentifier, owner: self) as? SidebarCellView else { return nil }
+        let cellView = tableView.box.makeView(withType: SidebarCellView.self, onwer: self)
         let item = items[row]
         cellView.imageView?.image = SFSymbol(systemName: .chevronLeftForwardslashChevronRight).nsImage
         cellView.textField?.stringValue = item
@@ -59,9 +62,9 @@ extension SidebarViewController: NSTableViewDataSource, NSTableViewDelegate {
     }
     
     func tableViewSelectionIsChanging(_ notification: Notification) {
-        delegate?.sidebarViewController(self, didSelectRow: tableView.selectedRow)
+        delegate?.sidebarViewController(self, didSelectRow: contentView.selectedRow)
         if isPressOptionKey {
-            delegate?.sidebarViewController(self, didPressOptionKeySelectRow: tableView.selectedRow)
+            delegate?.sidebarViewController(self, didPressOptionKeySelectRow: contentView.selectedRow)
         }
     }
 }

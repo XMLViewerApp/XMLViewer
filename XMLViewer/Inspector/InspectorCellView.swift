@@ -6,7 +6,8 @@
 //
 
 import AppKit
+import UIFoundation
 
-class InspectorTitleCellView: NSTableCellView {}
+class InspectorTitleCellView: TextTableCellView {}
 
-class InspectorDetailCellView: NSTableCellView {}
+class InspectorDetailCellView: TextTableCellView {}

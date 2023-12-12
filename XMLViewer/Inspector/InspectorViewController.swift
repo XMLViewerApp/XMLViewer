@@ -6,24 +6,17 @@
 //
 
 import AppKit
-import MagicLoading
+import UIFoundation
 
-protocol InspectorViewControllerDataSource: AnyObject {
-    var currentXMLNode: XMLNode? { get }
-}
-
-class InspectorViewController: NSViewController {
-    
+class InspectorViewController: VisualEffectScrollViewController<NSTableView> {
     enum TableColumnIdentifer: String, CaseIterable {
         case title = "Title"
         case detail = "Detail"
+        var identifier: NSUserInterfaceItemIdentifier {
+            .init(rawValue: rawValue)
+        }
     }
-    
-    weak var dataSource: InspectorViewControllerDataSource?
 
-    @MagicViewLoading
-    @IBOutlet var tableView: NSTableView
-    
     enum Row: Int, CaseIterable {
         case kind = 0
         case name
@@ -35,7 +28,7 @@ class InspectorViewController: NSViewController {
         case localName
         case prefix
         case uri
-        
+
         var title: String {
             switch self {
             case .kind:
@@ -60,7 +53,7 @@ class InspectorViewController: NSViewController {
                 "URI"
             }
         }
-        
+
         func detail(for node: XMLNode) -> String {
             switch self {
             case .kind:
@@ -89,50 +82,54 @@ class InspectorViewController: NSViewController {
 
     var xmlNode: XMLNode? {
         didSet {
-            tableView.reloadData()
+            contentView.reloadData()
         }
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        scrollView.do {
+            $0.drawsBackground = false
+            $0.backgroundColor = .clear
+        }
         
-        tableView.do {
+        contentView.do {
+            $0.headerView = nil
             $0.dataSource = self
             $0.delegate = self
             $0.backgroundColor = .clear
         }
+        
+        TableColumnIdentifer.allCases.forEach { column in
+            contentView.addTableColumn(NSTableColumn(identifier: column.identifier))
+        }
     }
-    
 }
-
 
 extension InspectorViewController: NSTableViewDataSource, NSTableViewDelegate {
     func numberOfRows(in tableView: NSTableView) -> Int {
         Row.allCases.count
     }
+
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard let tableColumn,
               let tableColumnIdentifier = TableColumnIdentifer(rawValue: tableColumn.identifier.rawValue),
               let row = Row(rawValue: row)
         else { return nil }
-        
+
         switch tableColumnIdentifier {
         case .title:
-            guard let cellView = tableView.makeView(withIdentifier: InspectorTitleCellView.box.typeNameIdentifier, owner: self) as? InspectorTitleCellView else { return nil }
+            let cellView = tableView.box.makeView(withType: InspectorTitleCellView.self, onwer: self)
             cellView.textField?.stringValue = row.title
             return cellView
         case .detail:
-            guard let cellView = tableView.makeView(withIdentifier: InspectorDetailCellView.box.typeNameIdentifier, owner: self) as? InspectorDetailCellView else { return nil }
+            let cellView = tableView.box.makeView(withType: InspectorDetailCellView.self, onwer: self)
             cellView.textField?.stringValue = xmlNode.map { row.detail(for: $0) }.unwrapOrDefaultValue
             return cellView
         }
     }
 }
-
-
-
-
-
 
 extension String? {
     var unwrapOrDefaultValue: String {

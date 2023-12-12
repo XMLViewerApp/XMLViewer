@@ -9,17 +9,11 @@ import AppKit
 import UIFoundation
 
 class MainSplitViewController: NSSplitViewController {
-    var sidebarViewController: SidebarViewController {
-        splitViewItems[0].viewController as! SidebarViewController
-    }
+    let sidebarViewController = SidebarViewController()
 
-    var contentViewController: ContentViewController {
-        splitViewItems[1].viewController as! ContentViewController
-    }
+    let contentViewController = ContentViewController()
 
-    var inspectorViewController: InspectorViewController {
-        splitViewItems[2].viewController as! InspectorViewController
-    }
+    let inspectorViewController = InspectorViewController()
 
     var documentItems: [XMLDocumentItem] = [] {
         didSet {
@@ -36,6 +30,10 @@ class MainSplitViewController: NSSplitViewController {
         sidebarViewController.delegate = self
         contentViewController.outlineSplitViewController.activeOutlineViewController.delegate = self
 
+        addSplitViewItem(NSSplitViewItem(sidebarWithViewController: sidebarViewController))
+        addSplitViewItem(NSSplitViewItem(contentListWithViewController: contentViewController))
+        addSplitViewItem(NSSplitViewItem(inspectorWithViewController: inspectorViewController))
+        
         splitViewItems[0].do {
             $0.minimumThickness = 200
             $0.maximumThickness = 500
@@ -50,11 +48,6 @@ class MainSplitViewController: NSSplitViewController {
     @objc func _toggleInspector(_ sender: Any?) {
         guard let inspectorItem = splitViewItems.filter({ $0.behavior == .inspector }).first else { return }
         inspectorItem.animator().isCollapsed = !inspectorItem.isCollapsed
-    }
-
-    override func flagsChanged(with event: NSEvent) {
-        print(String(describing: Self.self), event.modifierFlags.contains(.option))
-        super.flagsChanged(with: event)
     }
 }
 
@@ -77,12 +70,12 @@ extension MainSplitViewController: SidebarViewControllerDelegate {
         let documentItem = documentItems[row]
         switch viewMode {
         case .outline:
-            let outlineViewController = OutlineViewController.create()
+            let outlineViewController = OutlineViewController()
             outlineViewController.rootNode = documentItem.rootNode
             contentViewController.outlineSplitViewController.addSplitViewItem(NSSplitViewItem(viewController: outlineViewController))
             contentViewController.outlineSplitViewController.setEqualWidthSplitViewItems()
         case .text:
-            let textViewController = TextViewController.create()
+            let textViewController = TextViewController()
             textViewController.text = documentItem.text
             contentViewController.textSplitViewController.addSplitViewItem(NSSplitViewItem(viewController: textViewController))
             contentViewController.textSplitViewController.setEqualWidthSplitViewItems()

@@ -21,7 +21,7 @@ class Document: NSDocument {
 
     var data: Data?
 
-    let windowController = WindowController.create()
+    let windowController = MainWindowController()
 
     let store = XMLDocumentItemStore()
 

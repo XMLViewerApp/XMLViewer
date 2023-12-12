@@ -9,22 +9,16 @@ import AppKit
 import MagicLoading
 
 class ContentViewController: NSTabViewController {
-    @MagicViewLoading
-    @IBOutlet var outlineSplitViewControllerItem: NSTabViewItem
-
-    @MagicViewLoading
-    @IBOutlet var textSplitViewControllerItem: NSTabViewItem
     
-    var outlineSplitViewController: OutlineSplitViewController {
-        outlineSplitViewControllerItem.viewController as! OutlineSplitViewController
-    }
+    let outlineSplitViewController = OutlineSplitViewController()
 
-    var textSplitViewController: TextSplitViewController {
-        textSplitViewControllerItem.viewController as! TextSplitViewController
-    }
+    let textSplitViewController = TextSplitViewController()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        addTabViewItem(NSTabViewItem(viewController: outlineSplitViewController))
+        addTabViewItem(NSTabViewItem(viewController: textSplitViewController))
     }
 }

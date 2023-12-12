@@ -6,5 +6,6 @@
 //
 
 import AppKit
+import UIFoundation
 
-class SidebarCellView: NSTableCellView {}
+class SidebarCellView: ImageTextTableCellView {}
