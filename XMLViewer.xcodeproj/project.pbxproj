@@ -13,7 +13,6 @@
 		E9014E182B2487F000B14280 /* InspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9014E172B2487F000B14280 /* InspectorViewController.swift */; };
 		E931EDAA2B21F2BD0044786E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931EDA92B21F2BD0044786E /* Document.swift */; };
 		E931EDAD2B2215D40044786E /* ToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931EDAC2B2215D40044786E /* ToolbarController.swift */; };
-		E931EDB02B2219820044786E /* UIFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = E931EDAF2B2219820044786E /* UIFoundation */; };
 		E9A2B6F62B205375007DF1E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B6F52B205375007DF1E2 /* AppDelegate.swift */; };
 		E9A2B6F82B205375007DF1E2 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B6F72B205375007DF1E2 /* MainSplitViewController.swift */; };
 		E9A2B6FA2B205376007DF1E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A2B6F92B205376007DF1E2 /* Assets.xcassets */; };
@@ -23,7 +22,6 @@
 		E9AD29D12B24BA0400A900F1 /* OutlineNodeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29D02B24BA0400A900F1 /* OutlineNodeCellView.swift */; };
 		E9AD29DD2B24F78100A900F1 /* WelcomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29DC2B24F78100A900F1 /* WelcomeManager.swift */; };
 		E9AD29DF2B24FD7700A900F1 /* XMLViewMode.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29DE2B24FD7700A900F1 /* XMLViewMode.swift */; };
-		E9AD29FD2B256F9600A900F1 /* MagicLoading in Frameworks */ = {isa = PBXBuildFile; productRef = E9AD29FC2B256F9600A900F1 /* MagicLoading */; };
 		E9AD2A1F2B25E01800A900F1 /* DocumentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A1E2B25E01800A900F1 /* DocumentController.swift */; };
 		E9AD2A222B25F2F300A900F1 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = E9AD2A212B25F2F300A900F1 /* ZIPFoundation */; };
 		E9AD2A252B25F42F00A900F1 /* IDEIcons in Frameworks */ = {isa = PBXBuildFile; productRef = E9AD2A242B25F42F00A900F1 /* IDEIcons */; };
@@ -35,6 +33,10 @@
 		E9AD2A352B274ADB00A900F1 /* OutlineSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A342B274ADB00A900F1 /* OutlineSplitViewController.swift */; };
 		E9AD2A372B274AF200A900F1 /* TextSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A362B274AF200A900F1 /* TextSplitViewController.swift */; };
 		E9AD2A392B274FD900A900F1 /* FocusObservationSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A382B274FD900A900F1 /* FocusObservationSplitViewController.swift */; };
+		E9AD2A3F2B28855A00A900F1 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = E9AD2A3E2B28855A00A900F1 /* MainMenu.xib */; };
+		E9AD2A412B288B2400A900F1 /* SplitContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A402B288B2400A900F1 /* SplitContainerViewController.swift */; };
+		E9AD2A442B28945400A900F1 /* ViewHierarchyBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = E9AD2A432B28945400A900F1 /* ViewHierarchyBuilder */; };
+		E9AD2A472B289A1200A900F1 /* XMLViewerUI in Frameworks */ = {isa = PBXBuildFile; productRef = E9AD2A462B289A1200A900F1 /* XMLViewerUI */; };
 		E9CC81072B21BA66005DAF2F /* XMLParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */; };
 		E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */; };
 		E9CC810B2B21BB1C005DAF2F /* XMLNodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */; };
@@ -70,6 +72,9 @@
 		E9AD2A342B274ADB00A900F1 /* OutlineSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineSplitViewController.swift; sourceTree = "<group>"; };
 		E9AD2A362B274AF200A900F1 /* TextSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextSplitViewController.swift; sourceTree = "<group>"; };
 		E9AD2A382B274FD900A900F1 /* FocusObservationSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusObservationSplitViewController.swift; sourceTree = "<group>"; };
+		E9AD2A3E2B28855A00A900F1 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		E9AD2A402B288B2400A900F1 /* SplitContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitContainerViewController.swift; sourceTree = "<group>"; };
+		E9AD2A452B2899A600A900F1 /* XMLViewerUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XMLViewerUI; sourceTree = "<group>"; };
 		E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserDelegate.swift; sourceTree = "<group>"; };
 		E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLDocument+.swift"; sourceTree = "<group>"; };
 		E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLNodeItem.swift; sourceTree = "<group>"; };
@@ -85,9 +90,9 @@
 				E9AD2A302B261C3A00A900F1 /* WelcomeKit in Frameworks */,
 				E9F1800E2B2802CB008F5BB9 /* SnapKit in Frameworks */,
 				E9AD2A252B25F42F00A900F1 /* IDEIcons in Frameworks */,
-				E9AD29FD2B256F9600A900F1 /* MagicLoading in Frameworks */,
 				E9CC81132B22CC69005DAF2F /* SFSymbol in Frameworks */,
-				E931EDB02B2219820044786E /* UIFoundation in Frameworks */,
+				E9AD2A472B289A1200A900F1 /* XMLViewerUI in Frameworks */,
+				E9AD2A442B28945400A900F1 /* ViewHierarchyBuilder in Frameworks */,
 				E9AD2A222B25F2F300A900F1 /* ZIPFoundation in Frameworks */,
 				E9AD2A332B2744CA00A900F1 /* KeyCodes in Frameworks */,
 			);
@@ -106,6 +111,7 @@
 		E9A2B6E92B205375007DF1E2 = {
 			isa = PBXGroup;
 			children = (
+				E9AD2A452B2899A600A900F1 /* XMLViewerUI */,
 				E9A2B6F42B205375007DF1E2 /* XMLViewer */,
 				E9A2B6F32B205375007DF1E2 /* Products */,
 				E931EDA62B21F2A00044786E /* Frameworks */,
@@ -130,6 +136,7 @@
 				E9AD29D52B24BA7300A900F1 /* Models */,
 				E9AD29D72B24BA8F00A900F1 /* Utils */,
 				E931EDAB2B21F4270044786E /* Info.plist */,
+				E9AD2A3E2B28855A00A900F1 /* MainMenu.xib */,
 				E9A2B6F92B205376007DF1E2 /* Assets.xcassets */,
 				E9A2B6FE2B205376007DF1E2 /* XMLViewer.entitlements */,
 			);
@@ -155,6 +162,7 @@
 				E9AD29D02B24BA0400A900F1 /* OutlineNodeCellView.swift */,
 				E9AD2A362B274AF200A900F1 /* TextSplitViewController.swift */,
 				E9014E122B236EB700B14280 /* TextViewController.swift */,
+				E9AD2A402B288B2400A900F1 /* SplitContainerViewController.swift */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -221,14 +229,14 @@
 			);
 			name = XMLViewer;
 			packageProductDependencies = (
-				E931EDAF2B2219820044786E /* UIFoundation */,
 				E9CC81122B22CC69005DAF2F /* SFSymbol */,
-				E9AD29FC2B256F9600A900F1 /* MagicLoading */,
 				E9AD2A212B25F2F300A900F1 /* ZIPFoundation */,
 				E9AD2A242B25F42F00A900F1 /* IDEIcons */,
 				E9AD2A2F2B261C3A00A900F1 /* WelcomeKit */,
 				E9AD2A322B2744CA00A900F1 /* KeyCodes */,
 				E9F1800D2B2802CB008F5BB9 /* SnapKit */,
+				E9AD2A432B28945400A900F1 /* ViewHierarchyBuilder */,
+				E9AD2A462B289A1200A900F1 /* XMLViewerUI */,
 			);
 			productName = XMLViewer;
 			productReference = E9A2B6F22B205375007DF1E2 /* XMLViewer.app */;
@@ -259,14 +267,13 @@
 			);
 			mainGroup = E9A2B6E92B205375007DF1E2;
 			packageReferences = (
-				E931EDAE2B2219820044786E /* XCRemoteSwiftPackageReference "UIFoundation" */,
 				E9CC81112B22CC69005DAF2F /* XCRemoteSwiftPackageReference "SFSymbol" */,
-				E9AD29FB2B256F9600A900F1 /* XCRemoteSwiftPackageReference "MagicLoading" */,
 				E9AD2A202B25F2F300A900F1 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 				E9AD2A232B25F42F00A900F1 /* XCRemoteSwiftPackageReference "ide-icons" */,
 				E9AD2A2E2B261C3A00A900F1 /* XCRemoteSwiftPackageReference "WelcomeKit" */,
 				E9AD2A312B2744CA00A900F1 /* XCRemoteSwiftPackageReference "KeyCodes" */,
 				E9F1800C2B2802CB008F5BB9 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				E9AD2A422B28945400A900F1 /* XCRemoteSwiftPackageReference "ViewHierarchyBuilder" */,
 			);
 			productRefGroup = E9A2B6F32B205375007DF1E2 /* Products */;
 			projectDirPath = "";
@@ -283,6 +290,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9A2B6FA2B205376007DF1E2 /* Assets.xcassets in Resources */,
+				E9AD2A3F2B28855A00A900F1 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,6 +309,7 @@
 				E9AD2A392B274FD900A900F1 /* FocusObservationSplitViewController.swift in Sources */,
 				E9A2B6F82B205375007DF1E2 /* MainSplitViewController.swift in Sources */,
 				E9A2B70D2B205CA9007DF1E2 /* SidebarViewController.swift in Sources */,
+				E9AD2A412B288B2400A900F1 /* SplitContainerViewController.swift in Sources */,
 				E9AD2A272B25F55B00A900F1 /* XMLNode.Kind+.swift in Sources */,
 				E9A2B70F2B205CAF007DF1E2 /* OutlineViewController.swift in Sources */,
 				E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */,
@@ -458,6 +467,7 @@
 				INFOPLIST_FILE = XMLViewer/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -487,6 +497,7 @@
 				INFOPLIST_FILE = XMLViewer/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_NSMainNibFile = MainMenu;
 				INFOPLIST_KEY_NSPrincipalClass = NSApplication;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -525,22 +536,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		E931EDAE2B2219820044786E /* XCRemoteSwiftPackageReference "UIFoundation" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/Mx-Iris/UIFoundation";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
-		E9AD29FB2B256F9600A900F1 /* XCRemoteSwiftPackageReference "MagicLoading" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/danielpunkass/MagicLoading";
-			requirement = {
-				branch = main;
-				kind = branch;
-			};
-		};
 		E9AD2A202B25F2F300A900F1 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
@@ -573,6 +568,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		E9AD2A422B28945400A900F1 /* XCRemoteSwiftPackageReference "ViewHierarchyBuilder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Mx-Iris/ViewHierarchyBuilder";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		E9CC81112B22CC69005DAF2F /* XCRemoteSwiftPackageReference "SFSymbol" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Mx-Iris/SFSymbol";
@@ -592,16 +595,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		E931EDAF2B2219820044786E /* UIFoundation */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E931EDAE2B2219820044786E /* XCRemoteSwiftPackageReference "UIFoundation" */;
-			productName = UIFoundation;
-		};
-		E9AD29FC2B256F9600A900F1 /* MagicLoading */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E9AD29FB2B256F9600A900F1 /* XCRemoteSwiftPackageReference "MagicLoading" */;
-			productName = MagicLoading;
-		};
 		E9AD2A212B25F2F300A900F1 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E9AD2A202B25F2F300A900F1 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
@@ -621,6 +614,15 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E9AD2A312B2744CA00A900F1 /* XCRemoteSwiftPackageReference "KeyCodes" */;
 			productName = KeyCodes;
+		};
+		E9AD2A432B28945400A900F1 /* ViewHierarchyBuilder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9AD2A422B28945400A900F1 /* XCRemoteSwiftPackageReference "ViewHierarchyBuilder" */;
+			productName = ViewHierarchyBuilder;
+		};
+		E9AD2A462B289A1200A900F1 /* XMLViewerUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = XMLViewerUI;
 		};
 		E9CC81122B22CC69005DAF2F /* SFSymbol */ = {
 			isa = XCSwiftPackageProductDependency;

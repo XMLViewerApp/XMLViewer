@@ -6,7 +6,6 @@
 //
 
 import AppKit
-import MagicLoading
 
 class ContentViewController: NSTabViewController {
     

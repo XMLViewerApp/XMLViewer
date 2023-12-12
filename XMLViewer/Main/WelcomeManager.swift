@@ -95,9 +95,17 @@ extension WelcomeManager: WelcomePanelDataSource, WelcomePanelDelegate {
     func welcomePanel(_ welcomePanel: WelcomePanelController, didCheckShowPanelWhenLaunch isCheck: Bool) {}
 
     func welcomePanel(_ welcomePanel: WelcomeKit.WelcomePanelController, didDoubleClickRecentProjectAt index: Int) {
-        let url = documentController.recentDocumentURLs[index]
+        guard let url = documentController.recentDocumentURLs[safe: index] else { return }
         documentController.openDocument(withContentsOf: url, display: true) { _, _, _ in
             self.close()
         }
+    }
+}
+
+
+extension Array {
+    subscript(safe index: Int) -> Element? {
+        guard index >= 0, index < count else { return nil }
+        return self[index]
     }
 }

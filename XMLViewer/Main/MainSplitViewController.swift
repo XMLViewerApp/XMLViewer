@@ -6,7 +6,7 @@
 //
 
 import AppKit
-import UIFoundation
+import XMLViewerUI
 
 class MainSplitViewController: NSSplitViewController {
     let sidebarViewController = SidebarViewController()
@@ -18,8 +18,8 @@ class MainSplitViewController: NSSplitViewController {
     var documentItems: [XMLDocumentItem] = [] {
         didSet {
             sidebarViewController.items = documentItems.map(\.name)
-            contentViewController.outlineSplitViewController.activeOutlineViewController.rootNode = documentItems.first?.rootNode
-            contentViewController.textSplitViewController.activeTextViewController.text = documentItems.first?.text
+            guard let documentItem = documentItems.first else { return }
+            setDataForDocumentItem(documentItem)
         }
     }
 
@@ -61,25 +61,35 @@ extension MainSplitViewController: SidebarViewControllerDelegate {
     func sidebarViewController(_ controller: SidebarViewController, didSelectRow row: Int) {
         guard row >= 0, row < documentItems.count else { return }
         let documentItem = documentItems[row]
+        setDataForDocumentItem(documentItem)
+    }
+    
+    func setDataForDocumentItem(_ documentItem: XMLDocumentItem) {
         contentViewController.outlineSplitViewController.activeOutlineViewController.rootNode = documentItem.rootNode
+        contentViewController.outlineSplitViewController.activeOutlineViewController.bottomBarView.filePath = documentItem.path
         contentViewController.textSplitViewController.activeTextViewController.text = documentItem.text
+        contentViewController.textSplitViewController.activeTextViewController.bottomBarView.filePath = documentItem.path
     }
     
     func sidebarViewController(_ controller: SidebarViewController, didPressOptionKeySelectRow row: Int) {
         guard let viewMode = XMLViewMode(rawValue: contentViewController.selectedTabViewItemIndex) else { return }
         let documentItem = documentItems[row]
+        let containerViewController: SplitContainerViewController
         switch viewMode {
         case .outline:
             let outlineViewController = OutlineViewController()
             outlineViewController.rootNode = documentItem.rootNode
             contentViewController.outlineSplitViewController.addSplitViewItem(NSSplitViewItem(viewController: outlineViewController))
             contentViewController.outlineSplitViewController.setEqualWidthSplitViewItems()
+            containerViewController = outlineViewController
         case .text:
             let textViewController = TextViewController()
             textViewController.text = documentItem.text
             contentViewController.textSplitViewController.addSplitViewItem(NSSplitViewItem(viewController: textViewController))
             contentViewController.textSplitViewController.setEqualWidthSplitViewItems()
+            containerViewController = textViewController
         }
+        containerViewController.bottomBarView.filePath = documentItem.path
         
     }
 }

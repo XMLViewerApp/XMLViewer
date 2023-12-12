@@ -7,9 +7,8 @@
 
 import AppKit
 import UniformTypeIdentifiers
-import MagicLoading
 import SFSymbol
-import UIFoundation
+import XMLViewerUI
 
 protocol SidebarViewControllerDelegate: AnyObject {
     func sidebarViewController(_ controller: SidebarViewController, didSelectRow row: Int)

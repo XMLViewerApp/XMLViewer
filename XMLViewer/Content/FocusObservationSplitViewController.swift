@@ -10,7 +10,14 @@ import AppKit
 class FocusObservationSplitViewController: NSSplitViewController {
     var localMonitor: Any?
 
-    var activeIndex: Int = 0
+    public var activeIndex: Int {
+        if _activeIndex >= splitViewItems.count {
+            _activeIndex = 0
+        }
+        return _activeIndex
+    }
+    
+    private var _activeIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +43,7 @@ class FocusObservationSplitViewController: NSSplitViewController {
                 keyDown(with: theEvent)
             case .leftMouseDown:
                 if let activeIndex {
-                    self.activeIndex = activeIndex
+                    self._activeIndex = activeIndex
                 }
                 mouseDown(with: theEvent)
             case .flagsChanged:

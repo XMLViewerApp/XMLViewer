@@ -6,7 +6,7 @@
 //
 
 import AppKit
-import UIFoundation
+import XMLViewerUI
 
 class InspectorViewController: VisualEffectScrollViewController<NSTableView> {
     enum TableColumnIdentifer: String, CaseIterable {

@@ -6,14 +6,13 @@
 //
 
 import AppKit
-import UIFoundation
-import MagicLoading
+import XMLViewerUI
 
 protocol OutlineViewControllerDelegate: AnyObject {
     func outlineViewController(_ treeViewController: OutlineViewController, didSelectXMLNodeItem item: XMLNodeItem?)
 }
 
-class OutlineViewController: ScrollViewController<NSOutlineView> {
+class OutlineViewController: SplitContainerViewController {
     enum TableColumnIdentifer: String, CaseIterable {
         case name = "Name"
         case index = "Index"
@@ -45,9 +44,13 @@ class OutlineViewController: ScrollViewController<NSOutlineView> {
         }
     }
 
+    let (scrollView, outlineView) = OutlineView.scrollableOutlineView()
+    
+    
     var rootNode: XMLNodeItem? {
         didSet {
-            contentView.reloadData()
+            
+            outlineView.reloadData()
         }
     }
 
@@ -56,19 +59,31 @@ class OutlineViewController: ScrollViewController<NSOutlineView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        contentView.then {
+        containerView.addSubview(scrollView)
+        
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+        
+        scrollView.do {
+            $0.hasHorizontalScroller = true
+            $0.hasVerticalScroller = true
+        }
+        
+        outlineView.then {
             $0.dataSource = self
             $0.delegate = self
             $0.rowHeight = 25
             $0.style = .inset
             $0.usesAlternatingRowBackgroundColors = true
         }
+        
         TableColumnIdentifer.allCases.forEach { column in
             let tableColumn = NSTableColumn(identifier: column.identifier)
             tableColumn.title = column.rawValue
             tableColumn.width = column.width
             tableColumn.minWidth = column.minWidth
-            contentView.addTableColumn(tableColumn)
+            outlineView.addTableColumn(tableColumn)
         }
     }
 }
@@ -123,7 +138,7 @@ extension OutlineViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
     }
 
     func outlineViewSelectionIsChanging(_ notification: Notification) {
-        let item = contentView.item(atRow: contentView.selectedRow) as? XMLNodeItem
+        let item = outlineView.item(atRow: outlineView.selectedRow) as? XMLNodeItem
         delegate?.outlineViewController(self, didSelectXMLNodeItem: item)
     }
 }

@@ -6,7 +6,7 @@
 //
 
 import AppKit
-import UIFoundation
+import XMLViewerUI
 import ZIPFoundation
 import UniformTypeIdentifiers
 
@@ -44,7 +44,7 @@ class Document: NSDocument {
             do {
                 switch UTType(typeName) {
                 case .xml?:
-                    let documentItem = try XMLDocumentItem(name: url.lastPathComponent, data: data)
+                    let documentItem = try XMLDocumentItem(path: .fileSystem(url), data: data)
                     self.store.addItem(documentItem)
                 case .OpenXML.wordprocessing,
                      .OpenXML.spreadsheet,
@@ -55,7 +55,7 @@ class Document: NSDocument {
                         _ = try archive.extract(entry) { data in
                             entryData += data
                         }
-                        guard let documentItem = try? XMLDocumentItem(name: (entry.path as NSString).lastPathComponent, data: entryData) else { continue }
+                        guard let documentItem = try? XMLDocumentItem(path: .archiveEntry(entry.path), data: entryData) else { continue }
                         self.store.addItem(documentItem)
                     }
                 default:

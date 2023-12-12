@@ -6,14 +6,17 @@
 //
 
 import AppKit
-import UIFoundation
-import MagicLoading
+import XMLViewerUI
 
-class TextViewController: ScrollViewController<NSTextView> {
+class TextViewController: SplitContainerViewController {
+    let scrollView = NSScrollView()
+
+    let textView = NSTextView()
+
     var text: String? {
         didSet {
             if let text {
-                contentView.string = text
+                textView.string = text
             }
         }
     }
@@ -21,7 +24,18 @@ class TextViewController: ScrollViewController<NSTextView> {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        contentView.do {
+        containerView.addSubview(scrollView)
+
+        scrollView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+
+        scrollView.do {
+            $0.documentView = textView
+            $0.hasVerticalScroller = true
+        }
+
+        textView.do {
             $0.font = .monospacedSystemFont(ofSize: 14, weight: .regular)
             $0.isEditable = false
             $0.isSelectable = true

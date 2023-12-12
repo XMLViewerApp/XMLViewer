@@ -6,7 +6,7 @@
 //
 
 import AppKit
-import UIFoundation
+import XMLViewerUI
 
 class InspectorTitleCellView: TextTableCellView {}
 

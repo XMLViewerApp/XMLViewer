@@ -6,6 +6,6 @@
 //
 
 import AppKit
-import UIFoundation
+import XMLViewerUI
 
 class SidebarCellView: ImageTextTableCellView {}
