@@ -43,6 +43,7 @@
 		E9CC810D2B21D1AE005DAF2F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC810C2B21D1AE005DAF2F /* MainWindowController.swift */; };
 		E9CC81132B22CC69005DAF2F /* SFSymbol in Frameworks */ = {isa = PBXBuildFile; productRef = E9CC81122B22CC69005DAF2F /* SFSymbol */; };
 		E9CC81152B22F8E0005DAF2F /* ContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81142B22F8E0005DAF2F /* ContentViewController.swift */; };
+		E9D428252B29AEC600D709C1 /* MenuBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = E9D428242B29AEC600D709C1 /* MenuBuilder */; };
 		E9F1800E2B2802CB008F5BB9 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = E9F1800D2B2802CB008F5BB9 /* SnapKit */; };
 /* End PBXBuildFile section */
 
@@ -88,6 +89,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9AD2A302B261C3A00A900F1 /* WelcomeKit in Frameworks */,
+				E9D428252B29AEC600D709C1 /* MenuBuilder in Frameworks */,
 				E9F1800E2B2802CB008F5BB9 /* SnapKit in Frameworks */,
 				E9AD2A252B25F42F00A900F1 /* IDEIcons in Frameworks */,
 				E9CC81132B22CC69005DAF2F /* SFSymbol in Frameworks */,
@@ -237,6 +239,7 @@
 				E9F1800D2B2802CB008F5BB9 /* SnapKit */,
 				E9AD2A432B28945400A900F1 /* ViewHierarchyBuilder */,
 				E9AD2A462B289A1200A900F1 /* XMLViewerUI */,
+				E9D428242B29AEC600D709C1 /* MenuBuilder */,
 			);
 			productName = XMLViewer;
 			productReference = E9A2B6F22B205375007DF1E2 /* XMLViewer.app */;
@@ -274,6 +277,7 @@
 				E9AD2A312B2744CA00A900F1 /* XCRemoteSwiftPackageReference "KeyCodes" */,
 				E9F1800C2B2802CB008F5BB9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E9AD2A422B28945400A900F1 /* XCRemoteSwiftPackageReference "ViewHierarchyBuilder" */,
+				E9D428232B29AEC600D709C1 /* XCRemoteSwiftPackageReference "MenuBuilder" */,
 			);
 			productRefGroup = E9A2B6F32B205375007DF1E2 /* Products */;
 			projectDirPath = "";
@@ -584,6 +588,14 @@
 				kind = branch;
 			};
 		};
+		E9D428232B29AEC600D709C1 /* XCRemoteSwiftPackageReference "MenuBuilder" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/j-f1/MenuBuilder";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		E9F1800C2B2802CB008F5BB9 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/SnapKit/SnapKit";
@@ -628,6 +640,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E9CC81112B22CC69005DAF2F /* XCRemoteSwiftPackageReference "SFSymbol" */;
 			productName = SFSymbol;
+		};
+		E9D428242B29AEC600D709C1 /* MenuBuilder */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9D428232B29AEC600D709C1 /* XCRemoteSwiftPackageReference "MenuBuilder" */;
+			productName = MenuBuilder;
 		};
 		E9F1800D2B2802CB008F5BB9 /* SnapKit */ = {
 			isa = XCSwiftPackageProductDependency;

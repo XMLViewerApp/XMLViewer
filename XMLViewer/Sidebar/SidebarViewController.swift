@@ -32,6 +32,9 @@ class SidebarViewController: VisualEffectScrollViewController<TableView> {
         scrollView.do {
             $0.drawsBackground = false
             $0.backgroundColor = .clear
+//            $0.autohidesScrollers = true
+            $0.hasVerticalScroller = true
+            $0.verticalScroller?.alphaValue = 0
         }
         
         contentView.do {
@@ -40,10 +43,20 @@ class SidebarViewController: VisualEffectScrollViewController<TableView> {
             $0.delegate = self
             $0.rowHeight = 30
         }
+        
+        view.addTrackingArea(NSTrackingArea(rect: .zero, options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self, userInfo: nil))
     }
+    
     override func flagsChanged(with event: NSEvent) {
         isPressOptionKey = event.modifierFlags.contains(.option)
-        super.flagsChanged(with: event)
+    }
+    
+    override func mouseEntered(with event: NSEvent) {
+        scrollView.verticalScroller?.alphaValue = 1
+    }
+    
+    override func mouseExited(with event: NSEvent) {
+        scrollView.verticalScroller?.alphaValue = 0
     }
 }
 

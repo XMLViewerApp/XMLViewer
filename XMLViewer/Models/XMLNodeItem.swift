@@ -16,6 +16,22 @@ class XMLNodeItem: Hashable, Comparable {
 
     private(set) var isDisplayIndex: Bool
 
+    var hasValidName: Bool {
+        if let name = node.name, !name.isEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
+    
+    var hasValidValue: Bool {
+        if let value = node.stringValue, !value.isEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
+    
     var hasChildren: Bool {
         !children.isEmpty
     }
