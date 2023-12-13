@@ -7,15 +7,23 @@
 
 import Foundation
 
-class XMLNodeItem: Hashable, Comparable {
+class XMLNodeItem: NSObject, Comparable {
     let node: XMLNode
 
-    private(set) var children: [XMLNodeItem] = []
+    @objc dynamic var children: [XMLNodeItem] = []
 
     private(set) var siblingIndex: Int
 
     private(set) var isDisplayIndex: Bool
 
+    @objc dynamic var isLeaf: Bool {
+        children.count == 0
+    }
+    
+    @objc dynamic var childrenCount: Int {
+        children.count
+    }
+    
     var hasValidName: Bool {
         if let name = node.name, !name.isEmpty {
             return true
@@ -108,9 +116,16 @@ class XMLNodeItem: Hashable, Comparable {
     static func == (lhs: XMLNodeItem, rhs: XMLNodeItem) -> Bool {
         lhs.node == rhs.node
     }
-
-    func hash(into hasher: inout Hasher) {
+    
+    override func isEqual(_ object: Any?) -> Bool {
+        guard let object = object as? XMLNodeItem else { return false }
+        return object.node.isEqual(node)
+    }
+    
+    override var hash: Int {
+        var hasher = Hasher()
         hasher.combine(node)
+        return hasher.finalize()
     }
 
     static func < (lhs: XMLNodeItem, rhs: XMLNodeItem) -> Bool {

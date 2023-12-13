@@ -37,6 +37,10 @@
 		E9AD2A412B288B2400A900F1 /* SplitContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A402B288B2400A900F1 /* SplitContainerViewController.swift */; };
 		E9AD2A442B28945400A900F1 /* ViewHierarchyBuilder in Frameworks */ = {isa = PBXBuildFile; productRef = E9AD2A432B28945400A900F1 /* ViewHierarchyBuilder */; };
 		E9AD2A472B289A1200A900F1 /* XMLViewerUI in Frameworks */ = {isa = PBXBuildFile; productRef = E9AD2A462B289A1200A900F1 /* XMLViewerUI */; };
+		E9C095392B29E328007A4E02 /* OutlineTextFinderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C095382B29E328007A4E02 /* OutlineTextFinderClient.swift */; };
+		E9C0953B2B29EF35007A4E02 /* KVCKeyPathObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C0953A2B29EF35007A4E02 /* KVCKeyPathObject.swift */; };
+		E9C0953D2B29F000007A4E02 /* NSObject+KVB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C0953C2B29F000007A4E02 /* NSObject+KVB.swift */; };
+		E9C0953F2B2A1488007A4E02 /* OutlineTextIndexStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C0953E2B2A1488007A4E02 /* OutlineTextIndexStore.swift */; };
 		E9CC81072B21BA66005DAF2F /* XMLParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */; };
 		E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */; };
 		E9CC810B2B21BB1C005DAF2F /* XMLNodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */; };
@@ -76,6 +80,10 @@
 		E9AD2A3E2B28855A00A900F1 /* MainMenu.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		E9AD2A402B288B2400A900F1 /* SplitContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitContainerViewController.swift; sourceTree = "<group>"; };
 		E9AD2A452B2899A600A900F1 /* XMLViewerUI */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = XMLViewerUI; sourceTree = "<group>"; };
+		E9C095382B29E328007A4E02 /* OutlineTextFinderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineTextFinderClient.swift; sourceTree = "<group>"; };
+		E9C0953A2B29EF35007A4E02 /* KVCKeyPathObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVCKeyPathObject.swift; sourceTree = "<group>"; };
+		E9C0953C2B29F000007A4E02 /* NSObject+KVB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+KVB.swift"; sourceTree = "<group>"; };
+		E9C0953E2B2A1488007A4E02 /* OutlineTextIndexStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineTextIndexStore.swift; sourceTree = "<group>"; };
 		E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserDelegate.swift; sourceTree = "<group>"; };
 		E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLDocument+.swift"; sourceTree = "<group>"; };
 		E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLNodeItem.swift; sourceTree = "<group>"; };
@@ -161,6 +169,8 @@
 				E9AD2A382B274FD900A900F1 /* FocusObservationSplitViewController.swift */,
 				E9AD2A342B274ADB00A900F1 /* OutlineSplitViewController.swift */,
 				E9A2B70E2B205CAF007DF1E2 /* OutlineViewController.swift */,
+				E9C095382B29E328007A4E02 /* OutlineTextFinderClient.swift */,
+				E9C0953E2B2A1488007A4E02 /* OutlineTextIndexStore.swift */,
 				E9AD29D02B24BA0400A900F1 /* OutlineNodeCellView.swift */,
 				E9AD2A362B274AF200A900F1 /* TextSplitViewController.swift */,
 				E9014E122B236EB700B14280 /* TextViewController.swift */,
@@ -207,6 +217,8 @@
 		E9AD29D72B24BA8F00A900F1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E9C0953A2B29EF35007A4E02 /* KVCKeyPathObject.swift */,
+				E9C0953C2B29F000007A4E02 /* NSObject+KVB.swift */,
 				E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */,
 				E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */,
 				E9014E0E2B2368F300B14280 /* Then.swift */,
@@ -306,6 +318,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E9AD29DD2B24F78100A900F1 /* WelcomeManager.swift in Sources */,
+				E9C0953F2B2A1488007A4E02 /* OutlineTextIndexStore.swift in Sources */,
 				E9CC81072B21BA66005DAF2F /* XMLParserDelegate.swift in Sources */,
 				E9AD2A372B274AF200A900F1 /* TextSplitViewController.swift in Sources */,
 				E9AD2A352B274ADB00A900F1 /* OutlineSplitViewController.swift in Sources */,
@@ -315,7 +328,9 @@
 				E9A2B70D2B205CA9007DF1E2 /* SidebarViewController.swift in Sources */,
 				E9AD2A412B288B2400A900F1 /* SplitContainerViewController.swift in Sources */,
 				E9AD2A272B25F55B00A900F1 /* XMLNode.Kind+.swift in Sources */,
+				E9C095392B29E328007A4E02 /* OutlineTextFinderClient.swift in Sources */,
 				E9A2B70F2B205CAF007DF1E2 /* OutlineViewController.swift in Sources */,
+				E9C0953B2B29EF35007A4E02 /* KVCKeyPathObject.swift in Sources */,
 				E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */,
 				E9AD29CF2B24B9D000A900F1 /* InspectorCellView.swift in Sources */,
 				E9AD2A2B2B25FB6700A900F1 /* XMLDocumentItemStore.swift in Sources */,
@@ -332,6 +347,7 @@
 				E9CC810D2B21D1AE005DAF2F /* MainWindowController.swift in Sources */,
 				E9014E182B2487F000B14280 /* InspectorViewController.swift in Sources */,
 				E9A2B6F62B205375007DF1E2 /* AppDelegate.swift in Sources */,
+				E9C0953D2B29F000007A4E02 /* NSObject+KVB.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
