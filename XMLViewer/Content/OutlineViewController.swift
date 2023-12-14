@@ -58,25 +58,19 @@ enum OutlineViewColumn: Int, CaseIterable {
     }
 }
 
-class OutlineViewController: SplitContainerViewController {
+class OutlineViewController: SplitContainerViewController, OutlineTextFinderClientDataSource {
     let (scrollView, outlineView) = OutlineView.scrollableOutlineView()
 
-    let treeController = NSTreeController()
-
     var rootNode: XMLNodeItem? {
-        set {
-            treeController.content = newValue
-
+        didSet {
             outlineView.reloadData()
-        }
-        get {
-            treeController.content as? XMLNodeItem
+            outlineView.expandItem(rootNode, expandChildren: true)
         }
     }
 
     weak var delegate: OutlineViewControllerDelegate?
 
-    lazy var textFinderController = OutlineTextFinderClient(outlineView: outlineView, treeController: treeController)
+    lazy var textFinderController = OutlineTextFinderClient(outlineView: outlineView, dataSource: self)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,13 +78,6 @@ class OutlineViewController: SplitContainerViewController {
 
         scrollView.snp.makeConstraints { make in
             make.edges.equalToSuperview()
-        }
-
-        treeController.do {
-            $0.objectClass = XMLNodeItem.self
-            $0.childrenKeyPath = XMLNodeItem.keyPathString(\.children)
-            $0.leafKeyPath = XMLNodeItem.keyPathString(\.isLeaf)
-            $0.countKeyPath = XMLNodeItem.keyPathString(\.childrenCount)
         }
 
         scrollView.do {
@@ -111,10 +98,7 @@ class OutlineViewController: SplitContainerViewController {
                     .onSelect(target: self, action: #selector(copyOutlineNodeValueAction(_:)))
             }.then {
                 $0.delegate = self
-                $0.autoenablesItems = false
             }
-            $0.bind(.content, to: treeController, keyPath: \.arrangedObjects)
-            $0.bind(.selectionIndexPaths, to: treeController, keyPath: \.selectionIndexPaths)
         }
 
         OutlineViewColumn.allCases.forEach { column in
@@ -126,6 +110,11 @@ class OutlineViewController: SplitContainerViewController {
         }
     }
 
+    ///    override func performKeyEquivalent(with event: NSEvent) -> Bool {
+    ///        guard let key = event.key, key.keyCode == .keyboardF, key.modifierFlags.contains(.command) else { return false }
+    ///        return true
+    ///    }
+    ///
     @objc func copyOutlineNodeNameAction(_ sender: NSMenuItem) {
         guard let item = outlineView.item(atRow: outlineView.selectedRow) as? XMLNodeItem, let name = item.node.name else { return }
         NSPasteboard.general.do {
@@ -142,57 +131,71 @@ class OutlineViewController: SplitContainerViewController {
         }
     }
 
-    @IBAction override func performTextFinderAction(_ sender: Any?) {
-        textFinderController.textFinder.performAction(.showFindInterface)
+    override var acceptsFirstResponder: Bool { true }
+
+    @objc override func performTextFinderAction(_ sender: Any?) {
+        guard let menuItem = sender as? NSMenuItem, let action = NSTextFinder.Action(rawValue: menuItem.tag) else { return }
+        textFinderController.textFinder.performAction(action)
+    }
+
+    @objc func performFindPanelAction(_ sender: Any?) {
+        performTextFinderAction(sender)
     }
     
     
 }
 
-extension OutlineViewController: NSMenuDelegate {
-    func menuNeedsUpdate(_ menu: NSMenu) {
-        guard let nodeItem = outlineView.item(atRow: outlineView.selectedRow) as? XMLNodeItem else { return }
-        menu.items.forEach { item in
-            switch item.action {
-            case #selector(copyOutlineNodeNameAction(_:)):
-                item.isEnabled = nodeItem.hasValidName
-            case #selector(copyOutlineNodeValueAction(_:)):
-                item.isEnabled = nodeItem.hasValidValue
-            default:
-                break
-            }
+extension NSOutlineView {
+    func itemAtSelectedRow() -> Any? {
+        item(atRow: selectedRow)
+    }
+}
+
+extension OutlineViewController: NSMenuDelegate, NSMenuItemValidation {
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        guard let selectedNodeItem = outlineView.itemAtSelectedRow() as? XMLNodeItem else { return true }
+        switch menuItem.action {
+        case #selector(copyOutlineNodeNameAction(_:)):
+            return selectedNodeItem.hasValidName
+        case #selector(copyOutlineNodeValueAction(_:)):
+            return selectedNodeItem.hasValidValue
+        default:
+            return true
         }
     }
+
+    func menuNeedsUpdate(_ menu: NSMenu) {
+        menu.update()
+    }
 }
 
-extension OutlineViewController: NSTextFinderClient {}
-
 extension OutlineViewController: NSOutlineViewDataSource, NSOutlineViewDelegate {
-//    func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
-//        if let item = item as? XMLNodeItem {
-//            return item.children.count
-//        }
-//        return rootNode?.children.count ?? 0 // rootNode 是 XML 文档的根节点
-//    }
-//
-//    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
-//        if let item = item as? XMLNodeItem {
-//            return item.children[index]
-//        }
-//        return rootNode?.children[index] as Any
-//    }
-//
-//    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
-//        if let item = item as? XMLNodeItem {
-//            return !item.children.isEmpty
-//        }
-//        return false
-//    }
+    func outlineView(_ outlineView: NSOutlineView, numberOfChildrenOfItem item: Any?) -> Int {
+        if let item = item as? XMLNodeItem {
+            return item.children.count
+        }
+        return 1
+    }
+
+    func outlineView(_ outlineView: NSOutlineView, child index: Int, ofItem item: Any?) -> Any {
+        if let item = item as? XMLNodeItem {
+            return item.children[index]
+        }
+        return rootNode as Any
+    }
+
+    func outlineView(_ outlineView: NSOutlineView, isItemExpandable item: Any) -> Bool {
+        if let item = item as? XMLNodeItem {
+            return !item.children.isEmpty
+        }
+        return false
+    }
 
     /// 为 NSOutlineView 提供显示内容
     func outlineView(_ outlineView: NSOutlineView, viewFor tableColumn: NSTableColumn?, item: Any) -> NSView? {
-        guard let item = nodeItem(for: item),
-              let tableColumn, let tableColumnIdentifer = OutlineViewColumn(rawValue: outlineView.column(withIdentifier: tableColumn.identifier))
+        guard let item = item as? XMLNodeItem,
+              let tableColumn,
+              let tableColumnIdentifer = OutlineViewColumn(rawValue: outlineView.column(withIdentifier: tableColumn.identifier))
         else { return nil }
         let cellView: NSTableCellView
         switch tableColumnIdentifer {
@@ -217,12 +220,8 @@ extension OutlineViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
     }
 
     func outlineViewSelectionIsChanging(_ notification: Notification) {
-        let item = outlineView.item(atRow: outlineView.selectedRow) as? XMLNodeItem
+        let item = outlineView.itemAtSelectedRow() as? XMLNodeItem
         delegate?.outlineViewController(self, didSelectXMLNodeItem: item)
     }
-
-    func nodeItem(for item: Any) -> XMLNodeItem? {
-        guard let treeNode = item as? NSTreeNode, let nodeItem = treeNode.representedObject as? XMLNodeItem else { return nil }
-        return nodeItem
-    }
+    
 }
