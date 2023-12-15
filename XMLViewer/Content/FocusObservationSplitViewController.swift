@@ -16,13 +16,13 @@ class FocusObservationSplitViewController: NSSplitViewController {
         }
         return _activeIndex
     }
-    
+
     private var _activeIndex: Int = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        localMonitor = NSEvent.addLocalMonitorForEvents(matching: [.keyDown, .leftMouseDown, .flagsChanged]) { [weak self] theEvent -> NSEvent? in
+        localMonitor = NSEvent.addLocalMonitorForEvents(matching: [.leftMouseDown]) { [weak self] theEvent -> NSEvent? in
             guard let self else { return theEvent }
             let eventLocation = theEvent.locationInWindow
             let numberOfSplitViews = splitViewItems.count
@@ -37,23 +37,15 @@ class FocusObservationSplitViewController: NSSplitViewController {
                 }
             }
 
-            switch theEvent.type {
-            case .keyDown:
-                print("key down in pane \(activeIndex as Any)")
-                keyDown(with: theEvent)
-            case .leftMouseDown:
-                if let activeIndex {
-                    self._activeIndex = activeIndex
-                }
+            if theEvent.type == .leftMouseDown, let activeIndex {
+                self._activeIndex = activeIndex
                 mouseDown(with: theEvent)
-            case .flagsChanged:
-                print("flags changed in pane \(activeIndex as Any)")
-                flagsChanged(with: theEvent)
-            default:
-                print("captured some unhandled event in pane \(activeIndex as Any)")
             }
+
             return theEvent
         }
+        
+        print(localMonitor)
     }
 
     func setEqualWidthSplitViewItems() {

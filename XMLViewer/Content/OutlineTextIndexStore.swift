@@ -41,7 +41,7 @@ class OutlineTextIndexStore {
 
             currentStringCount += name.utf16.count
         }
-        if let value = node.node.stringValue {
+        if !node.hasChildren, let value = node.node.stringValue {
             let valueToken = Token(index: currentStringCount, row: currentRow, column: .value, string: value, nodeItem: node)
             tokens.append(valueToken)
 

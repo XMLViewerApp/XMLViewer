@@ -14,7 +14,7 @@ protocol OutlineTextFinderClientDataSource: AnyObject {
 class OutlineTextFinderClient: NSObject, NSTextFinderClient {
     unowned let outlineView: NSOutlineView
 
-    unowned let dataSource : OutlineTextFinderClientDataSource
+    unowned let dataSource: OutlineTextFinderClientDataSource
 
     let textFinder = NSTextFinder()
 
@@ -38,13 +38,11 @@ class OutlineTextFinderClient: NSObject, NSTextFinderClient {
     var isSelectable: Bool { false }
 
     var currentSelectedLocation: Int = 0
-    
+
     func string(at characterIndex: Int, effectiveRange outRange: NSRangePointer, endsWithSearchBoundary outFlag: UnsafeMutablePointer<ObjCBool>) -> String {
         let token = indexStore[characterIndex]
         let range = NSRange(location: token.index, length: token.string.utf16.count)
         outRange.pointee = range
-
-//        outFlag.pointee = .init((NSMaxRange(outRange.pointee) >= indexStore.currentStringCount))
         outFlag.pointee = true
         currentSelectedLocation = NSMaxRange(range)
         return token.string
@@ -62,17 +60,16 @@ class OutlineTextFinderClient: NSObject, NSTextFinderClient {
     var firstSelectedRange: NSRange {
         return .init(location: currentSelectedLocation, length: 0)
     }
-    
-    
+
     func contentView(at index: Int, effectiveCharacterRange outRange: NSRangePointer) -> NSView {
         let token = indexStore[index]
-        
+
         var parent: Any? = outlineView.parent(forItem: token.nodeItem) ?? dataSource.rootNode
         while let parentItem = parent as? XMLNodeItem, outlineView.isExpandable(parentItem), !outlineView.isItemExpanded(parentItem) {
             outlineView.expandItem(parentItem)
             parent = outlineView.parent(forItem: parentItem)
         }
-        
+
         outRange.pointee.location = token.index
         outRange.pointee.length = token.string.utf16.count
 
@@ -86,7 +83,7 @@ class OutlineTextFinderClient: NSObject, NSTextFinderClient {
             return nil
         }
     }
-    
+
     func rects(forCharacterRange range: NSRange) -> [NSValue]? {
 //        currentSelectedLocation = NSMaxRange(range)
         let token = indexStore[range.location]
@@ -98,7 +95,7 @@ class OutlineTextFinderClient: NSObject, NSTextFinderClient {
         }
         return rects
     }
-    
+
     func rects(forCharacterRange range: NSRange, in textField: NSTextField) -> [NSValue]? {
         guard let textFieldCell = textField.cell,
               let textFieldCellBounds = textFieldCell.controlView?.bounds
@@ -132,10 +129,8 @@ class OutlineTextFinderClient: NSObject, NSTextFinderClient {
         }
         return rectsArray.values(count: count)
     }
-    
-    func drawCharacters(in range: NSRange, forContentView view: NSView) {
-        
-    }
+
+    func drawCharacters(in range: NSRange, forContentView view: NSView) {}
 }
 
 extension NSRectArray {

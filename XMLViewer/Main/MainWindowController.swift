@@ -30,6 +30,16 @@ class MainWindowController: NSWindowController {
         contentWindow.center()
         contentWindow.toolbar = toolbarController.toolbar
     }
+    
+    @IBAction override func performTextFinderAction(_ sender: Any?) {
+        guard let viewMode = XMLViewMode(rawValue: splitViewController.contentViewController.selectedTabViewItemIndex) else { return }
+        switch viewMode {
+        case .outline:
+            splitViewController.contentViewController.outlineSplitViewController.activeOutlineViewController.performTextFinderAction(sender)
+        case .text:
+            splitViewController.contentViewController.textSplitViewController.activeTextViewController.performTextFinderAction(sender)
+        }
+    }
 }
 
 extension MainWindowController: ToolbarControllerDelegate {

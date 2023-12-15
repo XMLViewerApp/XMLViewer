@@ -13,6 +13,7 @@
 		E9014E182B2487F000B14280 /* InspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9014E172B2487F000B14280 /* InspectorViewController.swift */; };
 		E931EDAA2B21F2BD0044786E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931EDA92B21F2BD0044786E /* Document.swift */; };
 		E931EDAD2B2215D40044786E /* ToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931EDAC2B2215D40044786E /* ToolbarController.swift */; };
+		E973851B2B2BEB6900DF459C /* STTextView in Frameworks */ = {isa = PBXBuildFile; productRef = E973851A2B2BEB6900DF459C /* STTextView */; };
 		E9A2B6F62B205375007DF1E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B6F52B205375007DF1E2 /* AppDelegate.swift */; };
 		E9A2B6F82B205375007DF1E2 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B6F72B205375007DF1E2 /* MainSplitViewController.swift */; };
 		E9A2B6FA2B205376007DF1E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A2B6F92B205376007DF1E2 /* Assets.xcassets */; };
@@ -103,6 +104,7 @@
 				E9CC81132B22CC69005DAF2F /* SFSymbol in Frameworks */,
 				E9AD2A472B289A1200A900F1 /* XMLViewerUI in Frameworks */,
 				E9AD2A442B28945400A900F1 /* ViewHierarchyBuilder in Frameworks */,
+				E973851B2B2BEB6900DF459C /* STTextView in Frameworks */,
 				E9AD2A222B25F2F300A900F1 /* ZIPFoundation in Frameworks */,
 				E9AD2A332B2744CA00A900F1 /* KeyCodes in Frameworks */,
 			);
@@ -252,6 +254,7 @@
 				E9AD2A432B28945400A900F1 /* ViewHierarchyBuilder */,
 				E9AD2A462B289A1200A900F1 /* XMLViewerUI */,
 				E9D428242B29AEC600D709C1 /* MenuBuilder */,
+				E973851A2B2BEB6900DF459C /* STTextView */,
 			);
 			productName = XMLViewer;
 			productReference = E9A2B6F22B205375007DF1E2 /* XMLViewer.app */;
@@ -290,6 +293,7 @@
 				E9F1800C2B2802CB008F5BB9 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				E9AD2A422B28945400A900F1 /* XCRemoteSwiftPackageReference "ViewHierarchyBuilder" */,
 				E9D428232B29AEC600D709C1 /* XCRemoteSwiftPackageReference "MenuBuilder" */,
+				E97385192B2BEB6900DF459C /* XCRemoteSwiftPackageReference "STTextView" */,
 			);
 			productRefGroup = E9A2B6F32B205375007DF1E2 /* Products */;
 			projectDirPath = "";
@@ -556,6 +560,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E97385192B2BEB6900DF459C /* XCRemoteSwiftPackageReference "STTextView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/krzyzanowskim/STTextView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.8.22;
+			};
+		};
 		E9AD2A202B25F2F300A900F1 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
@@ -623,6 +635,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E973851A2B2BEB6900DF459C /* STTextView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E97385192B2BEB6900DF459C /* XCRemoteSwiftPackageReference "STTextView" */;
+			productName = STTextView;
+		};
 		E9AD2A212B25F2F300A900F1 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E9AD2A202B25F2F300A900F1 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;

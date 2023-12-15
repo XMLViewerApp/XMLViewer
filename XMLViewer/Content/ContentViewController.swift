@@ -20,4 +20,6 @@ class ContentViewController: NSTabViewController {
         addTabViewItem(NSTabViewItem(viewController: outlineSplitViewController))
         addTabViewItem(NSTabViewItem(viewController: textSplitViewController))
     }
+    
+    
 }
