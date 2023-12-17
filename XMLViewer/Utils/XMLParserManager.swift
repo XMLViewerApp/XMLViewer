@@ -7,7 +7,7 @@
 
 import Foundation
 
-class XMLParserDelegate: NSObject, Foundation.XMLParserDelegate {
+class XMLParserManager: NSObject, Foundation.XMLParserDelegate {
     class Node {
         var elementName: String
         var text: String = ""

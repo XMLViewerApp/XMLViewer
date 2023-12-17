@@ -6,6 +6,7 @@
 //
 
 import AppKit
+import Combine
 import SnapKit
 import KeyCodes
 import XMLViewerUI
@@ -58,19 +59,22 @@ enum OutlineViewColumn: Int, CaseIterable {
     }
 }
 
-class OutlineViewController: SplitContainerViewController, OutlineTextFinderClientDataSource {
+class OutlineViewController: SplitContainerViewController {
     let (scrollView, outlineView) = OutlineView.scrollableOutlineView()
 
+    @Published
     var rootNode: XMLNodeItem? {
         didSet {
             outlineView.reloadData()
-            outlineView.expandItem(rootNode, expandChildren: true)
+            if XMLViewerDefaults[.Settings.autoExpand] {
+                outlineView.expandItem(rootNode, expandChildren: true)
+            }
         }
     }
 
     weak var delegate: OutlineViewControllerDelegate?
 
-    lazy var textFinderController = OutlineTextFinderClient(outlineView: outlineView, dataSource: self)
+    lazy var textFinderController = OutlineTextFinderClient(outlineView: outlineView, initialValue: rootNode, publisher: $rootNode)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,11 +114,6 @@ class OutlineViewController: SplitContainerViewController, OutlineTextFinderClie
         }
     }
 
-    ///    override func performKeyEquivalent(with event: NSEvent) -> Bool {
-    ///        guard let key = event.key, key.keyCode == .keyboardF, key.modifierFlags.contains(.command) else { return false }
-    ///        return true
-    ///    }
-    ///
     @objc func copyOutlineNodeNameAction(_ sender: NSMenuItem) {
         guard let item = outlineView.item(atRow: outlineView.selectedRow) as? XMLNodeItem, let name = item.node.name else { return }
         NSPasteboard.general.do {
@@ -141,8 +140,6 @@ class OutlineViewController: SplitContainerViewController, OutlineTextFinderClie
     @objc func performFindPanelAction(_ sender: Any?) {
         performTextFinderAction(sender)
     }
-    
-    
 }
 
 extension NSOutlineView {
@@ -223,5 +220,4 @@ extension OutlineViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
         let item = outlineView.itemAtSelectedRow() as? XMLNodeItem
         delegate?.outlineViewController(self, didSelectXMLNodeItem: item)
     }
-    
 }

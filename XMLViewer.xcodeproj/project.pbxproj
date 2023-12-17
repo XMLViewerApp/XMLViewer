@@ -13,6 +13,12 @@
 		E9014E182B2487F000B14280 /* InspectorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9014E172B2487F000B14280 /* InspectorViewController.swift */; };
 		E931EDAA2B21F2BD0044786E /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931EDA92B21F2BD0044786E /* Document.swift */; };
 		E931EDAD2B2215D40044786E /* ToolbarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E931EDAC2B2215D40044786E /* ToolbarController.swift */; };
+		E93BF07D2B2DBB5300A732A6 /* Settings in Frameworks */ = {isa = PBXBuildFile; productRef = E93BF07C2B2DBB5300A732A6 /* Settings */; };
+		E93BF0812B2DC02000A732A6 /* Defaults in Frameworks */ = {isa = PBXBuildFile; productRef = E93BF0802B2DC02000A732A6 /* Defaults */; };
+		E93BF08E2B2DCD1F00A732A6 /* GeneralSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93BF08C2B2DCD1F00A732A6 /* GeneralSettingsViewController.swift */; };
+		E93BF08F2B2DCD1F00A732A6 /* GeneralSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E93BF08D2B2DCD1F00A732A6 /* GeneralSettingsViewController.xib */; };
+		E93BF0912B2DE12000A732A6 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93BF0902B2DE12000A732A6 /* Defaults.swift */; };
+		E93BF0932B2DE34900A732A6 /* SettingsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E93BF0922B2DE34900A732A6 /* SettingsManager.swift */; };
 		E973851B2B2BEB6900DF459C /* STTextView in Frameworks */ = {isa = PBXBuildFile; productRef = E973851A2B2BEB6900DF459C /* STTextView */; };
 		E9A2B6F62B205375007DF1E2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B6F52B205375007DF1E2 /* AppDelegate.swift */; };
 		E9A2B6F82B205375007DF1E2 /* MainSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B6F72B205375007DF1E2 /* MainSplitViewController.swift */; };
@@ -42,7 +48,7 @@
 		E9C0953B2B29EF35007A4E02 /* KVCKeyPathObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C0953A2B29EF35007A4E02 /* KVCKeyPathObject.swift */; };
 		E9C0953D2B29F000007A4E02 /* NSObject+KVB.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C0953C2B29F000007A4E02 /* NSObject+KVB.swift */; };
 		E9C0953F2B2A1488007A4E02 /* OutlineTextIndexStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9C0953E2B2A1488007A4E02 /* OutlineTextIndexStore.swift */; };
-		E9CC81072B21BA66005DAF2F /* XMLParserDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */; };
+		E9CC81072B21BA66005DAF2F /* XMLParserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81062B21BA66005DAF2F /* XMLParserManager.swift */; };
 		E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */; };
 		E9CC810B2B21BB1C005DAF2F /* XMLNodeItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */; };
 		E9CC810D2B21D1AE005DAF2F /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9CC810C2B21D1AE005DAF2F /* MainWindowController.swift */; };
@@ -60,6 +66,10 @@
 		E931EDA92B21F2BD0044786E /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		E931EDAB2B21F4270044786E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		E931EDAC2B2215D40044786E /* ToolbarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolbarController.swift; sourceTree = "<group>"; };
+		E93BF08C2B2DCD1F00A732A6 /* GeneralSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeneralSettingsViewController.swift; sourceTree = "<group>"; };
+		E93BF08D2B2DCD1F00A732A6 /* GeneralSettingsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GeneralSettingsViewController.xib; sourceTree = "<group>"; };
+		E93BF0902B2DE12000A732A6 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
+		E93BF0922B2DE34900A732A6 /* SettingsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsManager.swift; sourceTree = "<group>"; };
 		E9A2B6F22B205375007DF1E2 /* XMLViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = XMLViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9A2B6F52B205375007DF1E2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E9A2B6F72B205375007DF1E2 /* MainSplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSplitViewController.swift; sourceTree = "<group>"; };
@@ -85,7 +95,7 @@
 		E9C0953A2B29EF35007A4E02 /* KVCKeyPathObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KVCKeyPathObject.swift; sourceTree = "<group>"; };
 		E9C0953C2B29F000007A4E02 /* NSObject+KVB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+KVB.swift"; sourceTree = "<group>"; };
 		E9C0953E2B2A1488007A4E02 /* OutlineTextIndexStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineTextIndexStore.swift; sourceTree = "<group>"; };
-		E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserDelegate.swift; sourceTree = "<group>"; };
+		E9CC81062B21BA66005DAF2F /* XMLParserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLParserManager.swift; sourceTree = "<group>"; };
 		E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "XMLDocument+.swift"; sourceTree = "<group>"; };
 		E9CC810A2B21BB1C005DAF2F /* XMLNodeItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XMLNodeItem.swift; sourceTree = "<group>"; };
 		E9CC810C2B21D1AE005DAF2F /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
@@ -97,12 +107,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E93BF0812B2DC02000A732A6 /* Defaults in Frameworks */,
 				E9AD2A302B261C3A00A900F1 /* WelcomeKit in Frameworks */,
 				E9D428252B29AEC600D709C1 /* MenuBuilder in Frameworks */,
 				E9F1800E2B2802CB008F5BB9 /* SnapKit in Frameworks */,
 				E9AD2A252B25F42F00A900F1 /* IDEIcons in Frameworks */,
 				E9CC81132B22CC69005DAF2F /* SFSymbol in Frameworks */,
 				E9AD2A472B289A1200A900F1 /* XMLViewerUI in Frameworks */,
+				E93BF07D2B2DBB5300A732A6 /* Settings in Frameworks */,
 				E9AD2A442B28945400A900F1 /* ViewHierarchyBuilder in Frameworks */,
 				E973851B2B2BEB6900DF459C /* STTextView in Frameworks */,
 				E9AD2A222B25F2F300A900F1 /* ZIPFoundation in Frameworks */,
@@ -118,6 +130,17 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		E93BF07E2B2DBD1100A732A6 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				E93BF0922B2DE34900A732A6 /* SettingsManager.swift */,
+				E93BF08C2B2DCD1F00A732A6 /* GeneralSettingsViewController.swift */,
+				E93BF08D2B2DCD1F00A732A6 /* GeneralSettingsViewController.xib */,
+				E93BF0902B2DE12000A732A6 /* Defaults.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		E9A2B6E92B205375007DF1E2 = {
@@ -145,6 +168,7 @@
 				E9AD29D22B24BA3800A900F1 /* Sidebar */,
 				E9AD29D32B24BA4400A900F1 /* Content */,
 				E9AD29D42B24BA4D00A900F1 /* Inspector */,
+				E93BF07E2B2DBD1100A732A6 /* Settings */,
 				E9AD29D52B24BA7300A900F1 /* Models */,
 				E9AD29D72B24BA8F00A900F1 /* Utils */,
 				E931EDAB2B21F4270044786E /* Info.plist */,
@@ -222,7 +246,7 @@
 				E9C0953A2B29EF35007A4E02 /* KVCKeyPathObject.swift */,
 				E9C0953C2B29F000007A4E02 /* NSObject+KVB.swift */,
 				E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */,
-				E9CC81062B21BA66005DAF2F /* XMLParserDelegate.swift */,
+				E9CC81062B21BA66005DAF2F /* XMLParserManager.swift */,
 				E9014E0E2B2368F300B14280 /* Then.swift */,
 			);
 			path = Utils;
@@ -255,6 +279,8 @@
 				E9AD2A462B289A1200A900F1 /* XMLViewerUI */,
 				E9D428242B29AEC600D709C1 /* MenuBuilder */,
 				E973851A2B2BEB6900DF459C /* STTextView */,
+				E93BF07C2B2DBB5300A732A6 /* Settings */,
+				E93BF0802B2DC02000A732A6 /* Defaults */,
 			);
 			productName = XMLViewer;
 			productReference = E9A2B6F22B205375007DF1E2 /* XMLViewer.app */;
@@ -294,6 +320,8 @@
 				E9AD2A422B28945400A900F1 /* XCRemoteSwiftPackageReference "ViewHierarchyBuilder" */,
 				E9D428232B29AEC600D709C1 /* XCRemoteSwiftPackageReference "MenuBuilder" */,
 				E97385192B2BEB6900DF459C /* XCRemoteSwiftPackageReference "STTextView" */,
+				E93BF07B2B2DBB5300A732A6 /* XCRemoteSwiftPackageReference "Settings" */,
+				E93BF07F2B2DC02000A732A6 /* XCRemoteSwiftPackageReference "Defaults" */,
 			);
 			productRefGroup = E9A2B6F32B205375007DF1E2 /* Products */;
 			projectDirPath = "";
@@ -309,6 +337,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E93BF08F2B2DCD1F00A732A6 /* GeneralSettingsViewController.xib in Resources */,
 				E9A2B6FA2B205376007DF1E2 /* Assets.xcassets in Resources */,
 				E9AD2A3F2B28855A00A900F1 /* MainMenu.xib in Resources */,
 			);
@@ -323,7 +352,7 @@
 			files = (
 				E9AD29DD2B24F78100A900F1 /* WelcomeManager.swift in Sources */,
 				E9C0953F2B2A1488007A4E02 /* OutlineTextIndexStore.swift in Sources */,
-				E9CC81072B21BA66005DAF2F /* XMLParserDelegate.swift in Sources */,
+				E9CC81072B21BA66005DAF2F /* XMLParserManager.swift in Sources */,
 				E9AD2A372B274AF200A900F1 /* TextSplitViewController.swift in Sources */,
 				E9AD2A352B274ADB00A900F1 /* OutlineSplitViewController.swift in Sources */,
 				E9AD2A1F2B25E01800A900F1 /* DocumentController.swift in Sources */,
@@ -333,10 +362,12 @@
 				E9AD2A412B288B2400A900F1 /* SplitContainerViewController.swift in Sources */,
 				E9AD2A272B25F55B00A900F1 /* XMLNode.Kind+.swift in Sources */,
 				E9C095392B29E328007A4E02 /* OutlineTextFinderClient.swift in Sources */,
+				E93BF08E2B2DCD1F00A732A6 /* GeneralSettingsViewController.swift in Sources */,
 				E9A2B70F2B205CAF007DF1E2 /* OutlineViewController.swift in Sources */,
 				E9C0953B2B29EF35007A4E02 /* KVCKeyPathObject.swift in Sources */,
 				E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */,
 				E9AD29CF2B24B9D000A900F1 /* InspectorCellView.swift in Sources */,
+				E93BF0912B2DE12000A732A6 /* Defaults.swift in Sources */,
 				E9AD2A2B2B25FB6700A900F1 /* XMLDocumentItemStore.swift in Sources */,
 				E9014E132B236EB700B14280 /* TextViewController.swift in Sources */,
 				E9014E0C2B23684D00B14280 /* SidebarCellView.swift in Sources */,
@@ -345,6 +376,7 @@
 				E9AD2A292B25FB6100A900F1 /* XMLDocumentItem.swift in Sources */,
 				E9CC81152B22F8E0005DAF2F /* ContentViewController.swift in Sources */,
 				E9CC810B2B21BB1C005DAF2F /* XMLNodeItem.swift in Sources */,
+				E93BF0932B2DE34900A732A6 /* SettingsManager.swift in Sources */,
 				E9AD29DF2B24FD7700A900F1 /* XMLViewMode.swift in Sources */,
 				E931EDAD2B2215D40044786E /* ToolbarController.swift in Sources */,
 				E9AD29D12B24BA0400A900F1 /* OutlineNodeCellView.swift in Sources */,
@@ -560,6 +592,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		E93BF07B2B2DBB5300A732A6 /* XCRemoteSwiftPackageReference "Settings" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Settings";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.0;
+			};
+		};
+		E93BF07F2B2DC02000A732A6 /* XCRemoteSwiftPackageReference "Defaults" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/sindresorhus/Defaults";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.1.0;
+			};
+		};
 		E97385192B2BEB6900DF459C /* XCRemoteSwiftPackageReference "STTextView" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/krzyzanowskim/STTextView";
@@ -635,6 +683,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		E93BF07C2B2DBB5300A732A6 /* Settings */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E93BF07B2B2DBB5300A732A6 /* XCRemoteSwiftPackageReference "Settings" */;
+			productName = Settings;
+		};
+		E93BF0802B2DC02000A732A6 /* Defaults */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E93BF07F2B2DC02000A732A6 /* XCRemoteSwiftPackageReference "Defaults" */;
+			productName = Defaults;
+		};
 		E973851A2B2BEB6900DF459C /* STTextView */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E97385192B2BEB6900DF459C /* XCRemoteSwiftPackageReference "STTextView" */;

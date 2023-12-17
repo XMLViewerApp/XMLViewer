@@ -28,4 +28,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         return true
     }
+    
+    @IBAction func showSettings(_ sender: Any?) {
+        SettingsManager.shared.show()
+    }
 }
