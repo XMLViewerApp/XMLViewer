@@ -31,7 +31,7 @@
                     </columns>
                     <gridCells>
                         <gridCell row="HzG-Wd-CHk" column="eo7-yF-jaf" xPlacement="trailing" id="B7R-W3-ZMN">
-                            <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LbE-p9-18w">
+                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LbE-p9-18w">
                                 <rect key="frame" x="22" y="104" width="80" height="16"/>
                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Auto expand" id="BGP-wY-Gsb">
                                     <font key="font" usesAppearanceFont="YES"/>
@@ -54,7 +54,7 @@
                         </gridCell>
                         <gridCell row="DqO-Wf-KhO" column="eo7-yF-jaf" id="e93-wy-ftX"/>
                         <gridCell row="DqO-Wf-KhO" column="iTm-oH-jLg" xPlacement="leading" yPlacement="top" id="hwg-NJ-oBR">
-                            <textField key="contentView" focusRingType="none" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aJ8-cq-IiA">
+                            <textField key="contentView" horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="aJ8-cq-IiA">
                                 <rect key="frame" x="108" y="81" width="345" height="14"/>
                                 <textFieldCell key="cell" title="The root node is displayed by default if the node is not expanded" id="Cf9-q5-bpx">
                                     <font key="font" metaFont="smallSystem"/>

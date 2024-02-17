@@ -15,7 +15,7 @@ protocol SidebarViewControllerDelegate: AnyObject {
     func sidebarViewController(_ controller: SidebarViewController, didPressOptionKeySelectRow row: Int)
 }
 
-class SidebarViewController: VisualEffectScrollViewController<TableView> {
+class SidebarViewController: VisualEffectScrollViewController<SingleColumnTableView> {
     weak var delegate: SidebarViewControllerDelegate?
 
     var items: [String] = [] {

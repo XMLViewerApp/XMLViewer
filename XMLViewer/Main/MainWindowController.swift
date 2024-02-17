@@ -9,10 +9,9 @@ import AppKit
 import XMLViewerUI
 
 class MainWindowController: NSWindowController {
-    convenience init() {
-        self.init(windowNibName: "")
-    }
 
+    override var windowNibName: NSNib.Name? { "" }
+    
     lazy var splitViewController = MainSplitViewController()
 
     lazy var contentWindow = NSWindow(contentRect: .zero, styleMask: [.titled, .closable, .miniaturizable, .resizable, .fullSizeContentView], backing: .buffered, defer: false)

@@ -22,7 +22,8 @@ let package = Package(
         .target(
             name: "XMLViewerUI",
             dependencies: [
-                .product(name: "UIFoundation", package: "UIFoundation")
+                .product(name: "UIFoundation", package: "UIFoundation"),
+                .product(name: "UIFoundationToolbox", package: "UIFoundation")
             ]
         ),
         .testTarget(
