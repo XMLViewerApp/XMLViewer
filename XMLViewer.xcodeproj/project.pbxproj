@@ -25,6 +25,7 @@
 		E9A2B6FA2B205376007DF1E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E9A2B6F92B205376007DF1E2 /* Assets.xcassets */; };
 		E9A2B70D2B205CA9007DF1E2 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B70C2B205CA9007DF1E2 /* SidebarViewController.swift */; };
 		E9A2B70F2B205CAF007DF1E2 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B70E2B205CAF007DF1E2 /* OutlineViewController.swift */; };
+		E9A3A61F2BAB4627007B4C18 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A3A61E2BAB4627007B4C18 /* EventMonitor.swift */; };
 		E9AD29CF2B24B9D000A900F1 /* InspectorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29CE2B24B9D000A900F1 /* InspectorCellView.swift */; };
 		E9AD29D12B24BA0400A900F1 /* OutlineNodeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29D02B24BA0400A900F1 /* OutlineNodeCellView.swift */; };
 		E9AD29DD2B24F78100A900F1 /* WelcomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29DC2B24F78100A900F1 /* WelcomeManager.swift */; };
@@ -77,6 +78,7 @@
 		E9A2B6FE2B205376007DF1E2 /* XMLViewer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = XMLViewer.entitlements; sourceTree = "<group>"; };
 		E9A2B70C2B205CA9007DF1E2 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		E9A2B70E2B205CAF007DF1E2 /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
+		E9A3A61E2BAB4627007B4C18 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 		E9AD29CE2B24B9D000A900F1 /* InspectorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorCellView.swift; sourceTree = "<group>"; };
 		E9AD29D02B24BA0400A900F1 /* OutlineNodeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineNodeCellView.swift; sourceTree = "<group>"; };
 		E9AD29DC2B24F78100A900F1 /* WelcomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeManager.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 		E9AD29D72B24BA8F00A900F1 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				E9A3A61E2BAB4627007B4C18 /* EventMonitor.swift */,
 				E9C0953A2B29EF35007A4E02 /* KVCKeyPathObject.swift */,
 				E9C0953C2B29F000007A4E02 /* NSObject+KVB.swift */,
 				E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */,
@@ -361,6 +364,7 @@
 				E9A2B70D2B205CA9007DF1E2 /* SidebarViewController.swift in Sources */,
 				E9AD2A412B288B2400A900F1 /* SplitContainerViewController.swift in Sources */,
 				E9AD2A272B25F55B00A900F1 /* XMLNode.Kind+.swift in Sources */,
+				E9A3A61F2BAB4627007B4C18 /* EventMonitor.swift in Sources */,
 				E9C095392B29E328007A4E02 /* OutlineTextFinderClient.swift in Sources */,
 				E93BF08E2B2DCD1F00A732A6 /* GeneralSettingsViewController.swift in Sources */,
 				E9A2B70F2B205CAF007DF1E2 /* OutlineViewController.swift in Sources */,

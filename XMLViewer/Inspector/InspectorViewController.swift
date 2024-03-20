@@ -120,12 +120,14 @@ extension InspectorViewController: NSTableViewDataSource, NSTableViewDelegate {
 
         switch tableColumnIdentifier {
         case .title:
-            let cellView = tableView.box.makeView(withType: InspectorTitleCellView.self, onwer: self)
+            let cellView = tableView.box.makeView(ofClass: InspectorTitleCellView.self, owner: self)
             cellView.textField?.stringValue = row.title
+            cellView.textField?.font = .monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .semibold)
             return cellView
         case .detail:
-            let cellView = tableView.box.makeView(withType: InspectorDetailCellView.self, onwer: self)
+            let cellView = tableView.box.makeView(ofClass: InspectorDetailCellView.self, owner: self)
             cellView.textField?.stringValue = xmlNode.map { row.detail(for: $0) }.unwrapOrDefaultValue
+            cellView.textField?.font = .monospacedSystemFont(ofSize: NSFont.systemFontSize, weight: .regular)
             return cellView
         }
     }

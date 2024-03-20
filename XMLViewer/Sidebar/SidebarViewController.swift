@@ -23,8 +23,10 @@ class SidebarViewController: VisualEffectScrollViewController<SingleColumnTableV
             contentView.reloadData()
         }
     }
-    
+
     var isPressOptionKey: Bool = false
+
+    let eventMonitor: EventMonitor = .init()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,25 +38,28 @@ class SidebarViewController: VisualEffectScrollViewController<SingleColumnTableV
             $0.hasVerticalScroller = true
             $0.verticalScroller?.alphaValue = 0
         }
-        
+
         contentView.do {
             $0.backgroundColor = .clear
             $0.dataSource = self
             $0.delegate = self
             $0.rowHeight = 30
         }
-        
+
+        eventMonitor.addLocalMonitorForEvents(matching: [.flagsChanged]) { [weak self] event in
+            guard let self else { return event }
+            isPressOptionKey = event.type == .flagsChanged && event.modifierFlags.contains(.option)
+
+            return event
+        }
+
         view.addTrackingArea(NSTrackingArea(rect: .zero, options: [.mouseEnteredAndExited, .activeAlways, .inVisibleRect], owner: self, userInfo: nil))
     }
-    
-    override func flagsChanged(with event: NSEvent) {
-        isPressOptionKey = event.modifierFlags.contains(.option)
-    }
-    
+
     override func mouseEntered(with event: NSEvent) {
         scrollView.verticalScroller?.alphaValue = 1
     }
-    
+
     override func mouseExited(with event: NSEvent) {
         scrollView.verticalScroller?.alphaValue = 0
     }
@@ -66,17 +71,18 @@ extension SidebarViewController: NSTableViewDataSource, NSTableViewDelegate {
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
-        let cellView = tableView.box.makeView(withType: SidebarCellView.self, onwer: self)
+        let cellView = tableView.box.makeView(ofClass: SidebarCellView.self, owner: self)
         let item = items[row]
         cellView.imageView?.image = SFSymbol(systemName: .chevronLeftForwardslashChevronRight).nsImage
         cellView.textField?.stringValue = item
         return cellView
     }
-    
+
     func tableViewSelectionIsChanging(_ notification: Notification) {
-        delegate?.sidebarViewController(self, didSelectRow: contentView.selectedRow)
         if isPressOptionKey {
             delegate?.sidebarViewController(self, didPressOptionKeySelectRow: contentView.selectedRow)
+        } else {
+            delegate?.sidebarViewController(self, didSelectRow: contentView.selectedRow)
         }
     }
 }

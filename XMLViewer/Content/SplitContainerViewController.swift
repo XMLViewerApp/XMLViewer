@@ -68,16 +68,21 @@ class TopBarView: XiblessView {
 
     override init(frame frameRect: CGRect) {
         super.init(frame: frameRect)
-        closeButton.image = NSImage(named: NSImage.stopProgressTemplateName)
 
-        addSubview(closeButton)
+        hierarchy {
+            closeButton
+        }
 
         closeButton.snp.makeConstraints { make in
             make.top.left.bottom.equalToSuperview()
             make.width.equalTo(30)
         }
 
-        closeButton.box.setTarget(self, action: #selector(closeButtonAction(_:)))
+        closeButton.do {
+            $0.isBordered = false
+            $0.image = NSImage(named: NSImage.stopProgressTemplateName)
+            $0.box.setTarget(self, action: #selector(closeButtonAction(_:)))
+        }
     }
 
     @objc func closeButtonAction(_ sender: NSButton) {

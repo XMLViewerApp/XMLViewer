@@ -66,8 +66,10 @@ class OutlineViewController: SplitContainerViewController {
     var rootNode: XMLNodeItem? {
         didSet {
             outlineView.reloadData()
-            if XMLViewerDefaults[.Settings.autoExpand] {
-                outlineView.expandItem(rootNode, expandChildren: true)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.00001) {
+                if XMLViewerDefaults[.Settings.autoExpand] {
+                    self.outlineView.expandItem(self.rootNode, expandChildren: true)
+                }
             }
         }
     }
@@ -197,16 +199,16 @@ extension OutlineViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
         let cellView: NSTableCellView
         switch tableColumnIdentifer {
         case .name:
-            let nameCellView = outlineView.box.makeView(withType: OutlineNodeNameCellView.self, onwer: self)
+            let nameCellView = outlineView.box.makeView(ofClass: OutlineNodeNameCellView.self, owner: self)
             nameCellView.imageView?.image = item.node.kind.ideIcon?.image
             nameCellView.textField?.stringValue = item.node.name ?? "N/A"
             cellView = nameCellView
         case .value:
-            let valueCellView = outlineView.box.makeView(withType: OutlineNodeTextCellView.self, onwer: self)
+            let valueCellView = outlineView.box.makeView(ofClass: OutlineNodeTextCellView.self, owner: self)
             valueCellView.textField?.stringValue = item.hasChildren ? "" : item.node.stringValue ?? ""
             cellView = valueCellView
         case .index:
-            let indexCellView = outlineView.box.makeView(withType: OutlineNodeTextCellView.self, onwer: self)
+            let indexCellView = outlineView.box.makeView(ofClass: OutlineNodeTextCellView.self, owner: self)
             indexCellView.textField?.stringValue = item.isDisplayIndex ? item.siblingIndex.formatted() : ""
             indexCellView.textField?.alignment = .center
             cellView = indexCellView
