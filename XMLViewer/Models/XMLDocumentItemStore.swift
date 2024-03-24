@@ -9,6 +9,7 @@ import AppKit
 
 class XMLDocumentItemStore {
     var items: [XMLDocumentItem]
+    
     init(items: [XMLDocumentItem] = []) {
         self.items = items
     }

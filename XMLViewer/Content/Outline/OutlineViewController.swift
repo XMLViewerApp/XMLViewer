@@ -66,11 +66,6 @@ class OutlineViewController: SplitContainerViewController {
     var rootNode: XMLNodeItem? {
         didSet {
             outlineView.reloadData()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.00001) {
-                if XMLViewerDefaults[.Settings.autoExpand] {
-                    self.outlineView.expandItem(self.rootNode, expandChildren: true)
-                }
-            }
         }
     }
 
@@ -145,6 +140,9 @@ class OutlineViewController: SplitContainerViewController {
 }
 
 extension NSOutlineView {
+    func itemAtClickedRow() -> Any? {
+        item(atRow: clickedRow)
+    }
     func itemAtSelectedRow() -> Any? {
         item(atRow: selectedRow)
     }
@@ -152,12 +150,12 @@ extension NSOutlineView {
 
 extension OutlineViewController: NSMenuDelegate, NSMenuItemValidation {
     func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
-        guard let selectedNodeItem = outlineView.itemAtSelectedRow() as? XMLNodeItem else { return true }
+        let selectedNodeItem = outlineView.itemAtClickedRow() as? XMLNodeItem
         switch menuItem.action {
         case #selector(copyOutlineNodeNameAction(_:)):
-            return selectedNodeItem.hasValidName
+            return selectedNodeItem?.hasValidName ?? false
         case #selector(copyOutlineNodeValueAction(_:)):
-            return selectedNodeItem.hasValidValue
+            return selectedNodeItem?.hasValidValue ?? false
         default:
             return true
         }
@@ -187,7 +185,7 @@ extension OutlineViewController: NSOutlineViewDataSource, NSOutlineViewDelegate 
         if let item = item as? XMLNodeItem {
             return !item.children.isEmpty
         }
-        return false
+        return rootNode.map { !$0.children.isEmpty } ?? false
     }
 
     /// 为 NSOutlineView 提供显示内容

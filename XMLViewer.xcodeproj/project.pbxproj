@@ -26,6 +26,10 @@
 		E9A2B70D2B205CA9007DF1E2 /* SidebarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B70C2B205CA9007DF1E2 /* SidebarViewController.swift */; };
 		E9A2B70F2B205CAF007DF1E2 /* OutlineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A2B70E2B205CAF007DF1E2 /* OutlineViewController.swift */; };
 		E9A3A61F2BAB4627007B4C18 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A3A61E2BAB4627007B4C18 /* EventMonitor.swift */; };
+		E9A3A6482BADBC5D007B4C18 /* AdvancedCollectionTableView in Frameworks */ = {isa = PBXBuildFile; productRef = E9A3A6472BADBC5D007B4C18 /* AdvancedCollectionTableView */; };
+		E9A3A64B2BADC1AA007B4C18 /* SWXMLHash in Frameworks */ = {isa = PBXBuildFile; productRef = E9A3A64A2BADC1AA007B4C18 /* SWXMLHash */; };
+		E9A3A6712BAF409E007B4C18 /* NSView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9A3A6702BAF409E007B4C18 /* NSView+.swift */; };
+		E9A3A6752BB065B3007B4C18 /* WelcomeKit in Frameworks */ = {isa = PBXBuildFile; productRef = E9A3A6742BB065B3007B4C18 /* WelcomeKit */; };
 		E9AD29CF2B24B9D000A900F1 /* InspectorCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29CE2B24B9D000A900F1 /* InspectorCellView.swift */; };
 		E9AD29D12B24BA0400A900F1 /* OutlineNodeCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29D02B24BA0400A900F1 /* OutlineNodeCellView.swift */; };
 		E9AD29DD2B24F78100A900F1 /* WelcomeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD29DC2B24F78100A900F1 /* WelcomeManager.swift */; };
@@ -36,7 +40,6 @@
 		E9AD2A272B25F55B00A900F1 /* XMLNode.Kind+.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A262B25F55B00A900F1 /* XMLNode.Kind+.swift */; };
 		E9AD2A292B25FB6100A900F1 /* XMLDocumentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A282B25FB6100A900F1 /* XMLDocumentItem.swift */; };
 		E9AD2A2B2B25FB6700A900F1 /* XMLDocumentItemStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A2A2B25FB6700A900F1 /* XMLDocumentItemStore.swift */; };
-		E9AD2A302B261C3A00A900F1 /* WelcomeKit in Frameworks */ = {isa = PBXBuildFile; productRef = E9AD2A2F2B261C3A00A900F1 /* WelcomeKit */; };
 		E9AD2A332B2744CA00A900F1 /* KeyCodes in Frameworks */ = {isa = PBXBuildFile; productRef = E9AD2A322B2744CA00A900F1 /* KeyCodes */; };
 		E9AD2A352B274ADB00A900F1 /* OutlineSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A342B274ADB00A900F1 /* OutlineSplitViewController.swift */; };
 		E9AD2A372B274AF200A900F1 /* TextSplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E9AD2A362B274AF200A900F1 /* TextSplitViewController.swift */; };
@@ -79,6 +82,7 @@
 		E9A2B70C2B205CA9007DF1E2 /* SidebarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SidebarViewController.swift; sourceTree = "<group>"; };
 		E9A2B70E2B205CAF007DF1E2 /* OutlineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineViewController.swift; sourceTree = "<group>"; };
 		E9A3A61E2BAB4627007B4C18 /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		E9A3A6702BAF409E007B4C18 /* NSView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSView+.swift"; sourceTree = "<group>"; };
 		E9AD29CE2B24B9D000A900F1 /* InspectorCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorCellView.swift; sourceTree = "<group>"; };
 		E9AD29D02B24BA0400A900F1 /* OutlineNodeCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutlineNodeCellView.swift; sourceTree = "<group>"; };
 		E9AD29DC2B24F78100A900F1 /* WelcomeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeManager.swift; sourceTree = "<group>"; };
@@ -110,10 +114,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				E93BF0812B2DC02000A732A6 /* Defaults in Frameworks */,
-				E9AD2A302B261C3A00A900F1 /* WelcomeKit in Frameworks */,
+				E9A3A64B2BADC1AA007B4C18 /* SWXMLHash in Frameworks */,
 				E9D428252B29AEC600D709C1 /* MenuBuilder in Frameworks */,
 				E9F1800E2B2802CB008F5BB9 /* SnapKit in Frameworks */,
+				E9A3A6752BB065B3007B4C18 /* WelcomeKit in Frameworks */,
 				E9AD2A252B25F42F00A900F1 /* IDEIcons in Frameworks */,
+				E9A3A6482BADBC5D007B4C18 /* AdvancedCollectionTableView in Frameworks */,
 				E9CC81132B22CC69005DAF2F /* SFSymbol in Frameworks */,
 				E9AD2A472B289A1200A900F1 /* XMLViewerUI in Frameworks */,
 				E93BF07D2B2DBB5300A732A6 /* Settings in Frameworks */,
@@ -181,6 +187,27 @@
 			path = XMLViewer;
 			sourceTree = "<group>";
 		};
+		E9A3A6722BB028EA007B4C18 /* Outline */ = {
+			isa = PBXGroup;
+			children = (
+				E9AD2A342B274ADB00A900F1 /* OutlineSplitViewController.swift */,
+				E9A2B70E2B205CAF007DF1E2 /* OutlineViewController.swift */,
+				E9C095382B29E328007A4E02 /* OutlineTextFinderClient.swift */,
+				E9C0953E2B2A1488007A4E02 /* OutlineTextIndexStore.swift */,
+				E9AD29D02B24BA0400A900F1 /* OutlineNodeCellView.swift */,
+			);
+			path = Outline;
+			sourceTree = "<group>";
+		};
+		E9A3A6732BB028F2007B4C18 /* Text */ = {
+			isa = PBXGroup;
+			children = (
+				E9AD2A362B274AF200A900F1 /* TextSplitViewController.swift */,
+				E9014E122B236EB700B14280 /* TextViewController.swift */,
+			);
+			path = Text;
+			sourceTree = "<group>";
+		};
 		E9AD29D22B24BA3800A900F1 /* Sidebar */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,14 +222,9 @@
 			children = (
 				E9CC81142B22F8E0005DAF2F /* ContentViewController.swift */,
 				E9AD2A382B274FD900A900F1 /* FocusObservationSplitViewController.swift */,
-				E9AD2A342B274ADB00A900F1 /* OutlineSplitViewController.swift */,
-				E9A2B70E2B205CAF007DF1E2 /* OutlineViewController.swift */,
-				E9C095382B29E328007A4E02 /* OutlineTextFinderClient.swift */,
-				E9C0953E2B2A1488007A4E02 /* OutlineTextIndexStore.swift */,
-				E9AD29D02B24BA0400A900F1 /* OutlineNodeCellView.swift */,
-				E9AD2A362B274AF200A900F1 /* TextSplitViewController.swift */,
-				E9014E122B236EB700B14280 /* TextViewController.swift */,
 				E9AD2A402B288B2400A900F1 /* SplitContainerViewController.swift */,
+				E9A3A6722BB028EA007B4C18 /* Outline */,
+				E9A3A6732BB028F2007B4C18 /* Text */,
 			);
 			path = Content;
 			sourceTree = "<group>";
@@ -251,6 +273,7 @@
 				E9CC81082B21BB07005DAF2F /* XMLDocument+.swift */,
 				E9CC81062B21BA66005DAF2F /* XMLParserManager.swift */,
 				E9014E0E2B2368F300B14280 /* Then.swift */,
+				E9A3A6702BAF409E007B4C18 /* NSView+.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -275,7 +298,6 @@
 				E9CC81122B22CC69005DAF2F /* SFSymbol */,
 				E9AD2A212B25F2F300A900F1 /* ZIPFoundation */,
 				E9AD2A242B25F42F00A900F1 /* IDEIcons */,
-				E9AD2A2F2B261C3A00A900F1 /* WelcomeKit */,
 				E9AD2A322B2744CA00A900F1 /* KeyCodes */,
 				E9F1800D2B2802CB008F5BB9 /* SnapKit */,
 				E9AD2A432B28945400A900F1 /* ViewHierarchyBuilder */,
@@ -284,6 +306,9 @@
 				E973851A2B2BEB6900DF459C /* STTextView */,
 				E93BF07C2B2DBB5300A732A6 /* Settings */,
 				E93BF0802B2DC02000A732A6 /* Defaults */,
+				E9A3A6472BADBC5D007B4C18 /* AdvancedCollectionTableView */,
+				E9A3A64A2BADC1AA007B4C18 /* SWXMLHash */,
+				E9A3A6742BB065B3007B4C18 /* WelcomeKit */,
 			);
 			productName = XMLViewer;
 			productReference = E9A2B6F22B205375007DF1E2 /* XMLViewer.app */;
@@ -325,6 +350,8 @@
 				E97385192B2BEB6900DF459C /* XCRemoteSwiftPackageReference "STTextView" */,
 				E93BF07B2B2DBB5300A732A6 /* XCRemoteSwiftPackageReference "Settings" */,
 				E93BF07F2B2DC02000A732A6 /* XCRemoteSwiftPackageReference "Defaults" */,
+				E9A3A6462BADBC5D007B4C18 /* XCRemoteSwiftPackageReference "AdvancedCollectionTableView" */,
+				E9A3A6492BADC1AA007B4C18 /* XCRemoteSwiftPackageReference "SWXMLHash" */,
 			);
 			productRefGroup = E9A2B6F32B205375007DF1E2 /* Products */;
 			projectDirPath = "";
@@ -368,6 +395,7 @@
 				E9C095392B29E328007A4E02 /* OutlineTextFinderClient.swift in Sources */,
 				E93BF08E2B2DCD1F00A732A6 /* GeneralSettingsViewController.swift in Sources */,
 				E9A2B70F2B205CAF007DF1E2 /* OutlineViewController.swift in Sources */,
+				E9A3A6712BAF409E007B4C18 /* NSView+.swift in Sources */,
 				E9C0953B2B29EF35007A4E02 /* KVCKeyPathObject.swift in Sources */,
 				E9CC81092B21BB07005DAF2F /* XMLDocument+.swift in Sources */,
 				E9AD29CF2B24B9D000A900F1 /* InspectorCellView.swift in Sources */,
@@ -620,6 +648,22 @@
 				minimumVersion = 0.8.22;
 			};
 		};
+		E9A3A6462BADBC5D007B4C18 /* XCRemoteSwiftPackageReference "AdvancedCollectionTableView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/flocked/AdvancedCollectionTableView";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+		E9A3A6492BADC1AA007B4C18 /* XCRemoteSwiftPackageReference "SWXMLHash" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/drmohundro/SWXMLHash";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.2;
+			};
+		};
 		E9AD2A202B25F2F300A900F1 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/weichsel/ZIPFoundation";
@@ -702,6 +746,21 @@
 			package = E97385192B2BEB6900DF459C /* XCRemoteSwiftPackageReference "STTextView" */;
 			productName = STTextView;
 		};
+		E9A3A6472BADBC5D007B4C18 /* AdvancedCollectionTableView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9A3A6462BADBC5D007B4C18 /* XCRemoteSwiftPackageReference "AdvancedCollectionTableView" */;
+			productName = AdvancedCollectionTableView;
+		};
+		E9A3A64A2BADC1AA007B4C18 /* SWXMLHash */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9A3A6492BADC1AA007B4C18 /* XCRemoteSwiftPackageReference "SWXMLHash" */;
+			productName = SWXMLHash;
+		};
+		E9A3A6742BB065B3007B4C18 /* WelcomeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = E9AD2A2E2B261C3A00A900F1 /* XCRemoteSwiftPackageReference "WelcomeKit" */;
+			productName = WelcomeKit;
+		};
 		E9AD2A212B25F2F300A900F1 /* ZIPFoundation */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = E9AD2A202B25F2F300A900F1 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
@@ -711,11 +770,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = E9AD2A232B25F42F00A900F1 /* XCRemoteSwiftPackageReference "ide-icons" */;
 			productName = IDEIcons;
-		};
-		E9AD2A2F2B261C3A00A900F1 /* WelcomeKit */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = E9AD2A2E2B261C3A00A900F1 /* XCRemoteSwiftPackageReference "WelcomeKit" */;
-			productName = WelcomeKit;
 		};
 		E9AD2A322B2744CA00A900F1 /* KeyCodes */ = {
 			isa = XCSwiftPackageProductDependency;

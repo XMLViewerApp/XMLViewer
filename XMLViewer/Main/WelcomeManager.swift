@@ -13,48 +13,33 @@ import WelcomeKit
 class WelcomeManager {
     static let shared = WelcomeManager()
 
-    enum WelcomeAction: CaseIterable, WelcomeActionModel {
-        case plainXML
-        case openXML
-
-        var iconImage: NSImage {
-            switch self {
-            case .plainXML:
-                SFSymbol(systemName: .chevronLeftForwardslashChevronRight).nsImage
-            case .openXML:
-                SFSymbol(systemName: .docText).nsImage
-            }
-        }
-
-        var title: String {
-            switch self {
-            case .plainXML:
-                "Open Plain XML"
-            case .openXML:
-                "Open Office Open XML"
-            }
-        }
-
-        var detail: String {
-            switch self {
-            case .plainXML:
-                "Open a plain XML file "
-            case .openXML:
-                "Open a Microsoft Office document file"
-            }
-        }
-    }
-
     private var documentController: DocumentController { .default }
 
     private init() {
+        let primaryAction = WelcomeAction(image: SFSymbol(systemName: .chevronLeftForwardslashChevronRight).nsImage, title: "Open Plain XML", subtitle: "Open a plain XML file ") { [weak self] _ in
+            guard let self else { return }
+            documentController.beginOpenPanel { urls in
+                guard let url = urls?.first else { return }
+                self.documentController.openDocument(withContentsOf: url, display: true) { _, _, _ in }
+                self.close()
+            }
+        }
+        let secondaryAction = WelcomeAction(image: SFSymbol(systemName: .docText).nsImage, title: "Open Office Open XML", subtitle: "Open a Microsoft Office document file") { [weak self] _ in
+            guard let self else { return }
+            documentController.beginOpenPanel { urls in
+                guard let url = urls?.first else { return }
+                self.documentController.openDocument(withContentsOf: url, display: true) { _, _, _ in }
+                self.close()
+            }
+        }
+        welcomePanelController.configuration = .init(primaryAction: primaryAction, secondaryAction: secondaryAction)
         welcomePanelController.dataSource = self
         welcomePanelController.delegate = self
     }
 
     private var cancellable = Set<AnyCancellable>()
 
-    private let welcomePanelController = WelcomePanelController()
+    private let welcomePanelController: WelcomePanelController = .init()
 
     public func show() {
         welcomePanelController.showWindow(self)
@@ -66,42 +51,29 @@ class WelcomeManager {
 }
 
 extension WelcomeManager: WelcomePanelDataSource, WelcomePanelDelegate {
-    func numberOfActions(_ welcomePanel: WelcomeKit.WelcomePanelController) -> Int {
-        return WelcomeAction.allCases.count
+    func welcomePanelUsesRecentDocumentURLs(_ welcomePanel: WelcomePanelController) -> Bool {
+        return true
     }
 
-    func numberOfProjects(_ welcomePanel: WelcomeKit.WelcomePanelController) -> Int {
+    func numberOfProjects(in welcomePanel: WelcomeKit.WelcomePanelController) -> Int {
         return documentController.recentDocumentURLs.count
     }
 
-    func welcomePanel(_ welcomePanel: WelcomeKit.WelcomePanelController, modelForWelcomeActionViewAt index: Int) -> WelcomeKit.WelcomeActionModel {
-        return WelcomeAction.allCases[index]
-    }
-
-    func welcomePanel(_ welcomePanel: WelcomeKit.WelcomePanelController, urlForRecentTableViewAt index: Int) -> URL {
+    func welcomePanel(_ welcomePanel: WelcomeKit.WelcomePanelController, urlForProjectAtIndex index: Int) -> URL {
         return documentController.recentDocumentURLs[index]
     }
 
-    func welcomePanel(_ welcomePanel: WelcomeKit.WelcomePanelController, didClickActionAt index: Int) {
-        documentController.beginOpenPanel { urls in
-            guard let url = urls?.first else { return }
-            self.documentController.openDocument(withContentsOf: url, display: true) { _, _, _ in }
-            self.close()
-        }
-    }
-
-    func welcomePanel(_ welcomePanel: WelcomeKit.WelcomePanelController, didSelectRecentProjectAt index: Int) {}
+    func welcomePanel(_ welcomePanel: WelcomeKit.WelcomePanelController, didSelectProjectAtIndex index: Int) {}
 
     func welcomePanel(_ welcomePanel: WelcomePanelController, didCheckShowPanelWhenLaunch isCheck: Bool) {}
 
-    func welcomePanel(_ welcomePanel: WelcomeKit.WelcomePanelController, didDoubleClickRecentProjectAt index: Int) {
+    func welcomePanel(_ welcomePanel: WelcomeKit.WelcomePanelController, didDoubleClickProjectAtIndex index: Int) {
         guard let url = documentController.recentDocumentURLs[safe: index] else { return }
         documentController.openDocument(withContentsOf: url, display: true) { _, _, _ in
             self.close()
         }
     }
 }
-
 
 extension Array {
     subscript(safe index: Int) -> Element? {

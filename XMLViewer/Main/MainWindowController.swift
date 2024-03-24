@@ -36,7 +36,8 @@ class MainWindowController: NSWindowController {
         case .outline:
             splitViewController.contentViewController.outlineSplitViewController.activeOutlineViewController.performTextFinderAction(sender)
         case .text:
-            splitViewController.contentViewController.textSplitViewController.activeTextViewController.performTextFinderAction(sender)
+//            splitViewController.contentViewController.textSplitViewController.activeTextViewController.performTextFinderAction(sender)
+            break
         }
     }
 }

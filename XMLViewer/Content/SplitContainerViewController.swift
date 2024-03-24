@@ -11,6 +11,7 @@ import SFSymbol
 import IDEIcons
 import XMLViewerUI
 import ViewHierarchyBuilder
+import FZUIKit
 
 class SplitContainerViewController: XiblessViewController<NSView> {
     let topBarView = TopBarView()
@@ -57,6 +58,15 @@ class SplitContainerViewController: XiblessViewController<NSView> {
         bottomBarView.snp.makeConstraints { make in
             make.left.right.bottom.equalToSuperview()
             make.height.equalTo(30)
+        }
+    }
+
+    func setLoading(_ isLoading: Bool) {
+        if isLoading {
+            let loadingConfiguration = NSContentUnavailableConfiguration.loading()
+            view.contentUnavailableConfiguration = loadingConfiguration
+        } else {
+            view.contentUnavailableConfiguration = nil
         }
     }
 }

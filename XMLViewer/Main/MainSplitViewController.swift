@@ -24,7 +24,7 @@ class MainSplitViewController: NSSplitViewController {
     }
 
     override var acceptsFirstResponder: Bool { true }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         sidebarViewController.delegate = self
@@ -33,7 +33,7 @@ class MainSplitViewController: NSSplitViewController {
         addSplitViewItem(NSSplitViewItem(sidebarWithViewController: sidebarViewController))
         addSplitViewItem(NSSplitViewItem(contentListWithViewController: contentViewController))
         addSplitViewItem(NSSplitViewItem(inspectorWithViewController: inspectorViewController))
-        
+
         splitViewItems[0].do {
             $0.minimumThickness = 200
             $0.maximumThickness = 500
@@ -51,6 +51,15 @@ class MainSplitViewController: NSSplitViewController {
     }
 }
 
+extension MainSplitViewController {
+    func setDataForDocumentItem(_ documentItem: XMLDocumentItem) {
+        contentViewController.outlineSplitViewController.activeOutlineViewController.rootNode = documentItem.rootNode
+        contentViewController.outlineSplitViewController.activeOutlineViewController.bottomBarView.filePath = documentItem.path
+//        contentViewController.textSplitViewController.activeTextViewController.text = documentItem.text
+//        contentViewController.textSplitViewController.activeTextViewController.bottomBarView.filePath = documentItem.path
+    }
+}
+
 extension MainSplitViewController: OutlineViewControllerDelegate {
     func outlineViewController(_ treeViewController: OutlineViewController, didSelectXMLNodeItem item: XMLNodeItem?) {
         inspectorViewController.xmlNode = item?.node
@@ -63,14 +72,7 @@ extension MainSplitViewController: SidebarViewControllerDelegate {
         let documentItem = documentItems[row]
         setDataForDocumentItem(documentItem)
     }
-    
-    func setDataForDocumentItem(_ documentItem: XMLDocumentItem) {
-        contentViewController.outlineSplitViewController.activeOutlineViewController.rootNode = documentItem.rootNode
-        contentViewController.outlineSplitViewController.activeOutlineViewController.bottomBarView.filePath = documentItem.path
-        contentViewController.textSplitViewController.activeTextViewController.text = documentItem.text
-        contentViewController.textSplitViewController.activeTextViewController.bottomBarView.filePath = documentItem.path
-    }
-    
+
     func sidebarViewController(_ controller: SidebarViewController, didPressOptionKeySelectRow row: Int) {
         guard let viewMode = XMLViewMode(rawValue: contentViewController.selectedTabViewItemIndex) else { return }
         let documentItem = documentItems[row]
@@ -84,12 +86,11 @@ extension MainSplitViewController: SidebarViewControllerDelegate {
             containerViewController = outlineViewController
         case .text:
             let textViewController = TextViewController()
-            textViewController.text = documentItem.text
-            contentViewController.textSplitViewController.addSplitViewItem(NSSplitViewItem(viewController: textViewController))
-            contentViewController.textSplitViewController.setEqualWidthSplitViewItems()
+//            textViewController.text = documentItem.text
+//            contentViewController.textSplitViewController.addSplitViewItem(NSSplitViewItem(viewController: textViewController))
+//            contentViewController.textSplitViewController.setEqualWidthSplitViewItems()
             containerViewController = textViewController
         }
         containerViewController.bottomBarView.filePath = documentItem.path
-        
     }
 }

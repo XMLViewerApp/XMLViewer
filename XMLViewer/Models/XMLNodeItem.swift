@@ -10,52 +10,9 @@ import Foundation
 class XMLNodeItem: Hashable, Comparable {
     let node: XMLNode
 
-    var children: [XMLNodeItem] = []
-
-    private(set) var siblingIndex: Int
-
-    private(set) var isDisplayIndex: Bool
-
-    var isLeaf: Bool {
-        children.count == 0
-    }
-    
-    var childrenCount: Int {
-        children.count
-    }
-    
-    var hasValidName: Bool {
-        if let name = node.name, !name.isEmpty {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    var hasValidValue: Bool {
-        if let value = node.stringValue, !value.isEmpty {
-            return true
-        } else {
-            return false
-        }
-    }
-    
-    var hasChildren: Bool {
-        !children.isEmpty
-    }
-
-    convenience init(rootElement: XMLElement) {
-        self.init(element: rootElement, siblingIndex: 0, isDisplayIndex: false)
-    }
-
-    init(element: XMLNode, siblingIndex: Int, isDisplayIndex: Bool) {
-        self.node = element
-
-        self.siblingIndex = siblingIndex
-
-        self.isDisplayIndex = isDisplayIndex
-        // 处理子节点
-        if let element = element as? XMLElement {
+    lazy var children: [XMLNodeItem] = {
+        var result: [XMLNodeItem] = []
+        if let element = node as? XMLElement {
             var childNameCounts = [String: Int]()
             var childIndexMap = [String: Int]()
             let elementChildrenNodes = element.children ?? []
@@ -66,7 +23,7 @@ class XMLNodeItem: Hashable, Comparable {
                 }
             }
 
-            self.children = elementChildrenNodes.compactMap { node in
+            result = elementChildrenNodes.compactMap { node in
                 guard node.kind != .comment, let name = node.name else { return nil }
                 var index = 0
                 var isDisplayIndex = false
@@ -100,10 +57,59 @@ class XMLNodeItem: Hashable, Comparable {
                 return XMLNodeItem(attribute: node, siblingIndex: index, isDisplayIndex: isDisplayIndex)
             }
 
-            children.append(contentsOf: attributeChildrenNodes)
+            result.append(contentsOf: attributeChildrenNodes)
         }
 
-        children.sort()
+        result.sort()
+        return result
+    }()
+
+    private(set) var siblingIndex: Int
+
+    private(set) var isDisplayIndex: Bool
+
+    var isLeaf: Bool {
+        children.count == 0
+    }
+
+    var childrenCount: Int {
+        children.count
+    }
+
+    var hasValidName: Bool {
+        if let name = node.name, !name.isEmpty {
+            return true
+        } else {
+            return false
+        }
+    }
+
+    var hasValidValue: Bool {
+        if hasChildren {
+            return false
+        } else {
+            if let value = node.stringValue, !value.isEmpty {
+                return true
+            } else {
+                return false
+            }
+        }
+    }
+
+    var hasChildren: Bool {
+        !children.isEmpty
+    }
+
+    convenience init(rootElement: XMLElement) {
+        self.init(element: rootElement, siblingIndex: 0, isDisplayIndex: false)
+    }
+
+    init(element: XMLNode, siblingIndex: Int, isDisplayIndex: Bool) {
+        self.node = element
+
+        self.siblingIndex = siblingIndex
+
+        self.isDisplayIndex = isDisplayIndex
     }
 
     /// 专门用于处理属性节点的初始化方法
@@ -116,7 +122,7 @@ class XMLNodeItem: Hashable, Comparable {
     static func == (lhs: XMLNodeItem, rhs: XMLNodeItem) -> Bool {
         lhs.node == rhs.node
     }
-    
+
     func hash(into hasher: inout Hasher) {
         hasher.combine(node)
     }

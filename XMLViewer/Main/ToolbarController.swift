@@ -39,12 +39,12 @@ class ToolbarController: NSObject, NSToolbarDelegate {
             .sidebar: SidebarToolbarItem(itemIdentifier: .sidebar),
             .inspector: InspectorToolbarItem(itemIdentifier: .inspector),
             .path: PathToolbarItem(itemIdentifier: .path),
-            .viewMode: XMLViewModeToolbarItem(itemIdentifier: .viewMode).then {
-                $0.didSelectMode = { [weak self] viewMode in
-                    guard let self else { return }
-                    delegate.toolbarController(self, didSelectViewMode: viewMode)
-                }
-            },
+//            .viewMode: XMLViewModeToolbarItem(itemIdentifier: .viewMode).then {
+//                $0.didSelectMode = { [weak self] viewMode in
+//                    guard let self else { return }
+//                    delegate.toolbarController(self, didSelectViewMode: viewMode)
+//                }
+//            },
             ._inspectorTrackingSeparator: NSTrackingSeparatorToolbarItem(identifier: ._inspectorTrackingSeparator, splitView: delegate.splitView, dividerIndex: 1),
         ]
     }
