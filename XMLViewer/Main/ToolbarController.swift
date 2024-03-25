@@ -12,6 +12,7 @@ protocol ToolbarControllerDelegate: AnyObject {
     var splitView: NSSplitView { get }
 
     func toolbarController(_ toolbarController: ToolbarController, didSelectViewMode: XMLViewMode)
+    func toolbarControllerDidClickReload(_ toolbarController: ToolbarController)
 }
 
 class ToolbarController: NSObject, NSToolbarDelegate {
@@ -39,6 +40,15 @@ class ToolbarController: NSObject, NSToolbarDelegate {
             .sidebar: SidebarToolbarItem(itemIdentifier: .sidebar),
             .inspector: InspectorToolbarItem(itemIdentifier: .inspector),
             .path: PathToolbarItem(itemIdentifier: .path),
+            .reload: NSToolbarItem(itemIdentifier: .reload).then {
+                $0.image = SFSymbol(systemName: .arrowClockwise).nsImage
+                $0.isBordered = true
+                $0.toolTip = "Reload Document"
+                $0.actionBlock = { [weak self] _ in
+                    guard let self else { return }
+                    delegate.toolbarControllerDidClickReload(self)
+                }
+            },
 //            .viewMode: XMLViewModeToolbarItem(itemIdentifier: .viewMode).then {
 //                $0.didSelectMode = { [weak self] viewMode in
 //                    guard let self else { return }
@@ -58,7 +68,14 @@ class ToolbarController: NSObject, NSToolbarDelegate {
     }
 
     func toolbarDefaultItemIdentifiers(_ toolbar: NSToolbar) -> [NSToolbarItem.Identifier] {
-        return [.sidebar, .sidebarTrackingSeparator, .viewMode, ._inspectorTrackingSeparator, .flexibleSpace, .inspector]
+        return [
+            .sidebar,
+            .sidebarTrackingSeparator,
+            .reload,
+            ._inspectorTrackingSeparator,
+            .flexibleSpace,
+            .inspector,
+        ]
     }
 }
 
@@ -70,6 +87,7 @@ extension NSToolbarItem.Identifier {
     static let inspector = NSToolbarItem.Identifier("inspector")
     static let _inspectorTrackingSeparator = NSToolbarItem.Identifier("_inspectorTrackingSeparator")
     static let viewMode = NSToolbarItem.Identifier("viewMode")
+    static let reload = NSToolbarItem.Identifier("reload")
 }
 
 class SidebarToolbarItem: NSToolbarItem {
@@ -77,6 +95,7 @@ class SidebarToolbarItem: NSToolbarItem {
         super.init(itemIdentifier: itemIdentifier)
         action = #selector(NSSplitViewController.toggleSidebar(_:))
         image = SFSymbol(systemName: .sidebarLeft).nsImage
+        isBordered = true
     }
 }
 
@@ -85,6 +104,7 @@ class InspectorToolbarItem: NSToolbarItem {
         super.init(itemIdentifier: itemIdentifier)
         action = #selector(MainSplitViewController._toggleInspector(_:))
         image = SFSymbol(systemName: .sidebarRight).nsImage
+        isBordered = true
     }
 }
 

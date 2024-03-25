@@ -24,7 +24,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func applicationShouldHandleReopen(_ sender: NSApplication, hasVisibleWindows flag: Bool) -> Bool {
         if !flag {
-            WelcomeManager.shared.show()
+            if DocumentController.default.documents.isEmpty {
+                WelcomeManager.shared.show()
+            } else {
+                DocumentController.default.documents.forEach { document in
+                    document.showWindows()
+                }
+            }
         }
         return true
     }

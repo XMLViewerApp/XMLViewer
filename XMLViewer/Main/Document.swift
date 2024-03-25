@@ -19,29 +19,30 @@ class Document: NSDocument {
         ([UTType.xml] + [UTType.OpenXML.wordprocessing, UTType.OpenXML.spreadsheet, UTType.OpenXML.presentation].compactMap { $0 }).map(\.identifier)
     }
 
-    var data: Data?
-
-    let windowController = MainWindowController()
+    lazy var windowController = MainWindowController()
 
     let store = XMLDocumentItemStore()
+
+    let concurrentQueue = DispatchQueue(label: "com.JH.XMLViewer.Document.concurrentQueue", attributes: .concurrent)
+
+    let group = DispatchGroup()
 
     override init() {
         super.init()
     }
 
     override func makeWindowControllers() {
+        windowController.delegate = self
         addWindowController(windowController)
         if let fileURL {
             windowController.window?.setFrameAutosaveName(fileURL.path)
         }
     }
 
-    override func read(from url: URL, ofType typeName: String) throws {
-        let data = try Data(contentsOf: url)
-        self.data = data
-
-        DispatchQueue.global().async {
+    func loadData(from url: URL, ofType typeName: String) {
+        concurrentQueue.async(group: group) {
             do {
+                let data = try Data(contentsOf: url)
                 switch UTType(typeName) {
                 case .xml?:
                     let documentItem = try XMLDocumentItem(path: .fileSystem(url), data: data)
@@ -51,34 +52,50 @@ class Document: NSDocument {
                      .OpenXML.presentation:
                     let archive = try Archive(data: data, accessMode: .read, pathEncoding: nil)
                     for entry in archive {
-                        var entryData = Data()
-                        _ = try archive.extract(entry) { data in
-                            entryData += data
+                        do {
+                            var entryData = Data()
+                            _ = try archive.extract(entry) { data in
+                                entryData += data
+                            }
+                            let documentItem = try XMLDocumentItem(path: .archiveEntry(entry.path), data: entryData)
+                            self.store.addItem(documentItem)
+                        } catch {
+                            Swift.print(error, entry.path)
                         }
-                        guard let documentItem = try? XMLDocumentItem(path: .archiveEntry(entry.path), data: entryData) else { continue }
-                        self.store.addItem(documentItem)
                     }
                 default:
                     throw DocumentError.unsupportedFileType
                 }
-
-                DispatchQueue.main.async {
-                    self.windowController.splitViewController.documentItems = self.store.items
-                }
             } catch {
                 DispatchQueue.main.async {
-                    // Presents error(s) and close the document window.
                     self.presentError(error)
                     self.close()
                 }
             }
         }
+        group.notify(queue: .main) {
+            self.windowController.splitViewController.documentItems = self.store.items
+        }
+    }
+
+    override func read(from url: URL, ofType typeName: String) throws {
+        loadData(from: url, ofType: typeName)
     }
 
     override class var autosavesDrafts: Bool { false }
 
     override var isDocumentEdited: Bool { false }
 }
+
+extension Document: MainWindowControllerDelegate {
+    func mainWindowControllerRequestReloadDocumentData(_ controller: MainWindowController) {
+        if let fileURL, let fileType {
+            store.clearItems()
+            loadData(from: fileURL, ofType: fileType)
+        }
+    }
+}
+
 
 extension UTType {
     enum OpenXML {

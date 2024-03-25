@@ -17,4 +17,8 @@ class XMLDocumentItemStore {
     func addItem(_ item: XMLDocumentItem) {
         items.append(item)
     }
+    
+    func clearItems() {
+        items = []
+    }
 }

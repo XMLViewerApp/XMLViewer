@@ -8,8 +8,14 @@
 import AppKit
 import XMLViewerUI
 
+protocol MainWindowControllerDelegate: AnyObject {
+    func mainWindowControllerRequestReloadDocumentData(_ controller: MainWindowController)
+}
+
 class MainWindowController: NSWindowController {
 
+    weak var delegate: MainWindowControllerDelegate?
+    
     override var windowNibName: NSNib.Name? { "" }
     
     lazy var splitViewController = MainSplitViewController()
@@ -40,6 +46,10 @@ class MainWindowController: NSWindowController {
             break
         }
     }
+    
+    @IBAction func reloadDocument(_ sender: Any?) {
+        delegate?.mainWindowControllerRequestReloadDocumentData(self)
+    }
 }
 
 extension MainWindowController: ToolbarControllerDelegate {
@@ -49,5 +59,9 @@ extension MainWindowController: ToolbarControllerDelegate {
 
     func toolbarController(_ toolbarController: ToolbarController, didSelectViewMode viewMode: XMLViewMode) {
         splitViewController.contentViewController.selectedTabViewItemIndex = viewMode.rawValue
+    }
+    
+    func toolbarControllerDidClickReload(_ toolbarController: ToolbarController) {
+        delegate?.mainWindowControllerRequestReloadDocumentData(self)
     }
 }

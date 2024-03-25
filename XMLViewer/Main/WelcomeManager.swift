@@ -35,6 +35,15 @@ class WelcomeManager {
         welcomePanelController.configuration = .init(primaryAction: primaryAction, secondaryAction: secondaryAction)
         welcomePanelController.dataSource = self
         welcomePanelController.delegate = self
+        
+        NotificationCenter.default.publisher(for: DocumentController.didOpenNotification)
+            .sink { [weak self] _ in
+                guard let self else { return }
+                if welcomePanelController.window?.occlusionState.contains(.visible) ?? false {
+                    close()
+                }
+            }
+            .store(in: &cancellable)
     }
 
     private var cancellable = Set<AnyCancellable>()
@@ -42,7 +51,9 @@ class WelcomeManager {
     private let welcomePanelController: WelcomePanelController = .init()
 
     public func show() {
-        welcomePanelController.showWindow(self)
+        if DocumentController.default.documents.isEmpty {
+            welcomePanelController.showWindow(self)
+        }
     }
 
     public func close() {

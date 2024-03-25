@@ -191,6 +191,18 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Viewer" id="Ywx-M6-uH0">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Viewer" id="qPK-T1-Ewr">
+                        <items>
+                            <menuItem title="Reload Document" keyEquivalent="r" id="01J-Jj-sUN">
+                                <connections>
+                                    <action selector="reloadDocument:" target="-1" id="dxf-nx-yqK"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Window" id="aUF-d1-5bR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
