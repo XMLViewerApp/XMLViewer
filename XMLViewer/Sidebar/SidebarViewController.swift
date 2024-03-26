@@ -34,7 +34,6 @@ class SidebarViewController: VisualEffectScrollViewController<SingleColumnTableV
         scrollView.do {
             $0.drawsBackground = false
             $0.backgroundColor = .clear
-//            $0.autohidesScrollers = true
             $0.hasVerticalScroller = true
             $0.verticalScroller?.alphaValue = 0
         }

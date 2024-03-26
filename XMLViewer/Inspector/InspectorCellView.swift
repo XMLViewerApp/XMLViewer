@@ -10,4 +10,10 @@ import XMLViewerUI
 
 class InspectorTitleCellView: TextTableCellView {}
 
-class InspectorDetailCellView: TextTableCellView {}
+class InspectorDetailCellView: TextTableCellView {
+    override func setup() {
+        super.setup()
+        _textField.lineBreakMode = .byTruncatingTail
+        _textField.allowsExpansionToolTips = true
+    }
+}

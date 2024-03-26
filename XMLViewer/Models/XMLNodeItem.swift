@@ -44,7 +44,6 @@ class XMLNodeItem: Hashable, Comparable {
                 }
             }
 
-            // 将属性也作为节点添加
             let attributeChildrenNodes: [XMLNodeItem] = attributeNodes.compactMap { node in
                 guard node.kind != .comment, let name = node.name else { return nil }
                 var index = 0

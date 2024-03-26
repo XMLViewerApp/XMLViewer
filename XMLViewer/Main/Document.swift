@@ -27,6 +27,8 @@ class Document: NSDocument {
 
     let group = DispatchGroup()
 
+    var archive: Archive?
+
     override init() {
         super.init()
     }
@@ -78,6 +80,8 @@ class Document: NSDocument {
         }
     }
 
+    func exportFile(for xmlDocumentItem: XMLDocumentItem) {}
+
     override func read(from url: URL, ofType typeName: String) throws {
         loadData(from: url, ofType: typeName)
     }
@@ -95,7 +99,6 @@ extension Document: MainWindowControllerDelegate {
         }
     }
 }
-
 
 extension UTType {
     enum OpenXML {

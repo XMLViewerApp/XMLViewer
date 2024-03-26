@@ -31,6 +31,8 @@ class ToolbarController: NSObject, NSToolbarDelegate {
         self.delegate = delegate
         toolbar.delegate = self
         toolbar.displayMode = .iconOnly
+        toolbar.showsBaselineSeparator = false
+        
         makeToolbarItems()
     }
 
@@ -41,7 +43,7 @@ class ToolbarController: NSObject, NSToolbarDelegate {
             .inspector: InspectorToolbarItem(itemIdentifier: .inspector),
             .path: PathToolbarItem(itemIdentifier: .path),
             .reload: NSToolbarItem(itemIdentifier: .reload).then {
-                $0.image = SFSymbol(systemName: .arrowClockwise).nsImage
+                $0.image = SFSymbol(systemName: .arrowClockwise).scale(.large).nsImage
                 $0.isBordered = true
                 $0.toolTip = "Reload Document"
                 $0.actionBlock = { [weak self] _ in
@@ -93,8 +95,11 @@ extension NSToolbarItem.Identifier {
 class SidebarToolbarItem: NSToolbarItem {
     override init(itemIdentifier: NSToolbarItem.Identifier) {
         super.init(itemIdentifier: itemIdentifier)
+        label = "Navigator Sidebar"
+        paletteLabel = " Navigator Sidebar"
+        toolTip = "Hide or show the Navigator"
         action = #selector(NSSplitViewController.toggleSidebar(_:))
-        image = SFSymbol(systemName: .sidebarLeft).nsImage
+        image = SFSymbol(systemName: .sidebarLeft).scale(.large).nsImage
         isBordered = true
     }
 }
@@ -102,9 +107,12 @@ class SidebarToolbarItem: NSToolbarItem {
 class InspectorToolbarItem: NSToolbarItem {
     override init(itemIdentifier: NSToolbarItem.Identifier) {
         super.init(itemIdentifier: itemIdentifier)
-        action = #selector(MainSplitViewController._toggleInspector(_:))
-        image = SFSymbol(systemName: .sidebarRight).nsImage
+        label = "Inspector Sidebar"
+        paletteLabel = "Inspector Sidebar"
+        toolTip = "Hide or show the Inspectors"
         isBordered = true
+        action = #selector(MainSplitViewController._toggleInspector(_:))
+        image = SFSymbol(systemName: .sidebarRight).scale(.large).nsImage
     }
 }
 

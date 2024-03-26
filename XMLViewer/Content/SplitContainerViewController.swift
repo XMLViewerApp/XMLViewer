@@ -141,6 +141,7 @@ class BottomBarView: XiblessView {
 
         pathControl.do {
             $0.isEditable = false
+            $0.focusRingType = .none
         }
     }
 }

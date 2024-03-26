@@ -13,7 +13,7 @@ class DocumentController: NSDocumentController {
     static let willOpenNotification = Notification.Name("DocumentControllerWillOpenNotification")
 
     static let didOpenNotification = Notification.Name("DocumentControllerDidOpenNotification")
-
+    
     override func openDocument(withContentsOf url: URL, display displayDocument: Bool, completionHandler: @escaping (NSDocument?, Bool, (any Error)?) -> Void) {
         NotificationCenter.default.post(name: Self.willOpenNotification, object: self)
         super.openDocument(withContentsOf: url, display: displayDocument) {
@@ -21,8 +21,8 @@ class DocumentController: NSDocumentController {
             NotificationCenter.default.post(name: Self.didOpenNotification, object: self)
         }
     }
-
-    override func reopenDocument(for urlOrNil: URL?, withContentsOf contentsURL: URL, display displayDocument: Bool, completionHandler: @escaping (NSDocument?, Bool, (any Error)?) -> Void) {
-        completionHandler(nil, false, nil)
+    
+    override class func restoreWindow(withIdentifier identifier: NSUserInterfaceItemIdentifier, state: NSCoder, completionHandler: @escaping (NSWindow?, (any Error)?) -> Void) {
+        completionHandler(nil, CocoaError.error(.userCancelled))
     }
 }

@@ -57,7 +57,9 @@ class WelcomeManager {
     }
 
     public func close() {
-        welcomePanelController.close()
+        if !DocumentController.default.documents.isEmpty {
+            welcomePanelController.close()
+        }
     }
 }
 
